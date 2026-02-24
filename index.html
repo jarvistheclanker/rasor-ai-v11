@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasor AI — Never Miss Another Call. Never Lose Another Lead.</title>
+<meta name="description" content="AI systems for Scottsdale businesses. Voice receptionists, lead automation, and private AI operators. Built, deployed, and managed — from $697/mo.">
+<style>
+/* PATH SWITCHER */
+.path-switcher{display:inline-flex;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);overflow:hidden}
+.path-btn{font-size:10px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:9px 22px;cursor:pointer;border:none;background:none;transition:all .2s;white-space:nowrap}
+.path-btn:hover{color:rgba(255,255,255,.7)}
+.path-btn.active{background:white;color:#000;font-weight:500}
+.path-divider{width:1px;height:14px;background:rgba(255,255,255,.1);flex-shrink:0}
+/* PATH SECTIONS */
+.path-section{display:none}.path-section.active{display:block}
+/* APP MOCKUP */
+.app-frame{background:rgba(6,6,10,.97);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;box-shadow:0 40px 120px rgba(40,20,120,.3),0 8px 32px rgba(0,0,0,.8);overflow:hidden;position:relative}
+.app-frame::before{content:'';position:absolute;inset:0;border-radius:20px;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(120,80,255,.07),transparent 60%);pointer-events:none}
+.app-bar{display:flex;align-items:center;gap:7px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.app-d{width:9px;height:9px;border-radius:50%}
+.app-d-r{background:rgba(255,80,80,.45)}.app-d-y{background:rgba(255,180,50,.45)}.app-d-g{background:rgba(80,210,80,.45)}
+.app-bar-title{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;color:rgba(255,255,255,.18)}
+.app-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.app-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:14px}
+.app-lbl{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:7px}
+.app-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:white;line-height:1}
+.app-chg{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.03em;margin-top:4px}
+.app-chg.up{color:rgba(100,220,100,.85)}.app-chg.dn{color:rgba(255,100,100,.85)}
+.app-box{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:13px;margin-top:4px}
+.app-box-hd{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:10px}
+.app-email{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.app-email:last-child{border-bottom:none}
+.app-email-dot{width:5px;height:5px;border-radius:50%;background:rgba(180,140,255,.8);flex-shrink:0}
+.app-email-txt{font-size:11px;font-weight:300;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.app-chat-msg{font-size:11.5px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.38);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.app-chat-msg:last-child{border-bottom:none;color:rgba(255,255,255,.65)}
+.app-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;margin-right:8px}
+.app-tag-u{color:rgba(180,140,255,.6)}.app-tag-j{color:rgba(100,220,100,.6)}
+/* BIZ USE CASES */
+.uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:64px}
+.uc{background:#000;padding:40px 36px;cursor:default;transition:background .3s;position:relative;overflow:hidden}
+.uc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,200,80,.6),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.uc:hover{background:rgba(255,255,255,.02)}.uc:hover::before{transform:scaleX(1)}
+.uc-ind{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.55);margin-bottom:12px}
+.uc-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:white;margin-bottom:10px;line-height:1.15}
+.uc-desc{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.75;margin-bottom:16px}
+.uc-result{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(100,220,100,.65);border-top:1px solid rgba(255,255,255,.04);padding-top:14px}
+/* BIZ STATS */
+.biz-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin:0}
+.biz-stat{background:#020202;padding:48px 36px;text-align:center;cursor:default;transition:background .3s}
+.biz-stat:hover{background:rgba(255,255,255,.015)}
+.biz-stat-v{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:500;color:white;line-height:1}
+.biz-stat-l{font-size:12px;font-weight:300;color:rgba(255,255,255,.25);margin-top:10px;line-height:1.65}
+/* PROOF ITEMS (personal path reuse) */
+.feat-list{display:flex;flex-direction:column;gap:18px;margin-top:40px}
+.feat-item{display:flex;align-items:flex-start;gap:16px}
+.feat-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.feat-title{font-size:13px;font-weight:500;color:rgba(255,255,255,.72);margin-bottom:4px}
+.feat-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.28);line-height:1.65}
+/* PERSONAL + BIZ LAYOUT */
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1280px;margin:0 auto;padding:130px 60px}
+/* BIZ PRICING - 2 up top, 1 full-width */
+.biz-pg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
+.biz-plan{background:#000;padding:52px 44px;display:flex;flex-direction:column;position:relative;transition:background .3s}
+.biz-plan:hover{background:rgba(255,255,255,.015)}
+.biz-plan.feat{background:rgba(255,255,255,.022)}
+.biz-plan-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,200,80,.7),rgba(180,140,255,.4))}
+.biz-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.8);margin-bottom:14px}
+.biz-plan-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:white;margin-bottom:10px}
+.biz-plan-desc{font-size:12.5px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.28);margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.05)}
+.biz-price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;color:white;line-height:1}
+.biz-price-sub{font-size:11px;color:rgba(255,255,255,.22);margin-top:4px;margin-bottom:32px}
+.biz-feats{list-style:none;flex:1;margin-bottom:32px}
+.biz-feats li{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.35);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
+.biz-feats li::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(255,200,80,.45);flex-shrink:0}
+.biz-plan-full{grid-column:1/-1;background:rgba(255,200,80,.025);border-top:1px solid rgba(255,200,80,.07)}
+@media(max-width:900px){
+  .split-grid{grid-template-columns:1fr;padding:80px 24px;gap:48px}
+  .uc-grid,.biz-pg{grid-template-columns:1fr}
+  .biz-stats{grid-template-columns:1fr}
+  .biz-plan-full{grid-column:1}
+  .path-btn{padding:8px 16px}
+}
+@media(max-width:600px){
+  .split-grid{padding:60px 20px}
+  .app-row{grid-template-columns:1fr}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#000;
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+#cur{position:fixed;width:5px;height:5px;background:rgba(255,255,255,.8);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(255,255,255,.1);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0 60px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.04)}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.brand-rasor {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  font-size: 20px;
+  color: white;
+}
+.brand-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, .2);
+  margin: 0 10px;
+}
+.brand-ai {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(255, 255, 255, .35);
+}
+.nav-links{display:flex;align-items:center;gap:40px}
+.nav-a{font-size:11.5px;font-weight:400;letter-spacing:.05em;color:rgba(255,255,255,.28);text-decoration:none;transition:color .25s}
+.nav-a:hover{color:rgba(255,255,255,.85)}
+.nav-cta{
+  font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:white;text-decoration:none;
+  border:1px solid rgba(255,255,255,.18);
+  padding:11px 24px;transition:all .3s;
+}
+.nav-cta:hover{background:white;color:#000}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:0 60px;padding-top:68px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 60% 60% at 75% 50%, rgba(60,40,140,.1) 0%, transparent 65%);
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:38px 38px;
+  mask-image:radial-gradient(ellipse 85% 85% at 72% 50%,black 20%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 85% 85% at 72% 50%,black 20%,transparent 78%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;width:100%;
+}
+/* Top row: headline left, tree right */
+.hero-top{
+  display:grid;
+  grid-template-columns:460px 1fr;
+  align-items:center;
+  gap:0;
+  min-height:calc(100vh - 68px);
+  padding:80px 0;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:28px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.18);
+}
+.pip{width:5px;height:5px;border-radius:50%;background:rgba(100,220,100,.8);box-shadow:0 0 10px rgba(100,220,100,.6);animation:pip 2.4s ease-in-out infinite}
+@keyframes pip{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(60px,7vw,110px);
+  font-weight:600;line-height:1;
+  letter-spacing:-.02em;color:white;
+}
+h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
+.hero-sub{
+  margin-top:24px;
+  font-size:15px;font-weight:300;line-height:1.9;
+  color:rgba(255,255,255,.28);max-width:420px;
+}
+.hero-sub strong{color:rgba(255,255,255,.6);font-weight:400}
+.hero-btns{margin-top:44px;display:flex;align-items:center;gap:28px}
+.btn-w{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;
+  color:#000;background:white;padding:15px 32px;text-decoration:none;transition:all .3s;
+  border-radius:2px;
+}
+.btn-w:hover{background:rgba(180,150,255,.9);transform:translateY(-1px)}
+.btn-ghost{
+  font-size:12px;font-weight:300;color:rgba(255,255,255,.25);
+  text-decoration:none;letter-spacing:.03em;
+  display:flex;align-items:center;gap:8px;transition:color .3s;
+}
+.btn-ghost:hover{color:rgba(255,255,255,.7)}
+.hero-stats{
+  margin-top:52px;padding-top:28px;
+  border-top:1px solid rgba(255,255,255,.04);
+  display:flex;gap:44px;
+}
+.stat-v{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;color:white;line-height:1}
+.stat-l{font-size:10px;font-weight:300;color:rgba(255,255,255,.22);margin-top:5px;letter-spacing:.04em}
+.sdiv{width:1px;height:36px;background:rgba(255,255,255,.06)}
+
+/* SKILL TREE */
+.tree-wrap{
+  position:relative;
+  flex:1;
+  min-height:580px;
+  display:flex;align-items:center;justify-content:center;
+}
+#treeSvg{
+  width:100%;height:100%;
+  overflow:hidden;
+}
+.node-circle{cursor:pointer;transition:all .3s}
+.node-circle:hover{filter:brightness(1.4)}
+.node-label{
+  font:400 10px Inter,sans-serif;
+  fill:rgba(255,255,255,.45);
+  pointer-events:none;
+  transition:fill .3s;
+}
+.node-label.t1{font-weight:500;fill:rgba(255,255,255,.58)}
+.node-label.hov{fill:rgba(255,255,255,.95)!important}
+.center-label-main{
+  font:600 15px 'Cormorant Garamond',serif;
+  fill:rgba(255,255,255,.92);
+  letter-spacing:.12em;
+  pointer-events:none;
+}
+.center-label-sub{
+  font:300 italic 10px 'Cormorant Garamond',serif;
+  fill:rgba(255,255,255,.35);
+  pointer-events:none;
+}
+.orbit-ring{fill:none;stroke:rgba(255,255,255,.06);stroke-width:.6}
+.conn-line{stroke-width:.6;fill:none;opacity:.35}
+.flow-dot{r:2;opacity:.7}
+/* Orbit animation */
+.orbit1{animation:orb1 28s linear infinite}
+.orbit2{animation:orb2 42s linear infinite reverse}
+.orbit3{animation:orb3 60s linear infinite}
+@keyframes orb1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes orb2{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes orb3{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+/* Flow dots */
+@keyframes flowAlong{0%{offset-distance:0%}100%{offset-distance:100%}}
+/* Center pulse */
+.center-pulse{
+  fill:none;stroke:rgba(255,255,255,.06);stroke-width:1;
+  animation:cpulse 3s ease-in-out infinite;
+}
+.center-pulse2{
+  fill:none;stroke:rgba(255,255,255,.04);stroke-width:.6;
+  animation:cpulse 3s ease-in-out infinite 1.5s;
+}
+@keyframes cpulse{0%,100%{r:38;opacity:.4}50%{r:46;opacity:.8}}
+.tt{
+  position:fixed;z-index:500;
+  background:rgba(6,6,10,.97);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(28px);
+  padding:16px 20px;
+  pointer-events:none;
+  opacity:0;transition:opacity .2s,transform .2s;
+  transform:translateY(4px);
+  max-width:240px;
+}
+.tt.show{opacity:1;transform:translateY(0)}
+.tt-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:600;color:rgba(255,255,255,.95);
+  margin-bottom:6px;letter-spacing:.01em;
+}
+.tt-desc{font-size:11.5px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.65}
+.tt-tier{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+/* Node info card (click) */
+.node-card{
+  position:fixed;z-index:600;
+  background:rgba(6,6,10,.98);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(32px);
+  padding:28px 32px;
+  width:280px;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s,transform .25s;
+  transform:scale(.96);
+}
+.node-card.show{opacity:1;pointer-events:auto;transform:scale(1)}
+.nc-tier{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px}
+.nc-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:white;margin-bottom:10px;line-height:1.1}
+.nc-desc{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:20px}
+.nc-close{font-size:10px;color:rgba(255,255,255,.25);cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nc-close:hover{color:rgba(255,255,255,.7)}
+
+/* OPS PANEL */
+.ops-panel{
+  position:relative;width:100%;max-width:520px;margin:0 auto;
+  background:rgba(6,6,10,.97);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 24px 80px rgba(40,20,120,.25),0 4px 24px rgba(0,0,0,.7);
+}
+.ops-glow{
+  position:absolute;width:700px;height:400px;
+  background:radial-gradient(ellipse,rgba(60,30,160,.1) 0%,transparent 65%);
+  top:0;right:-100px;pointer-events:none;z-index:0;filter:blur(50px);
+}
+.ops-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  background:rgba(255,255,255,.018);
+  position:relative;z-index:1;
+}
+.ops-header-left{display:flex;gap:6px}
+.ops-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1)}
+.ops-dot-y{background:rgba(255,180,50,.5)}
+.ops-dot-g{background:rgba(80,210,80,.5)}
+.ops-title{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:.3em;color:rgba(255,255,255,.2);
+}
+.ops-uptime{
+  display:flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:.2em;color:rgba(100,220,100,.6);
+}
+.ops-live-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(100,220,100,.9);
+  box-shadow:0 0 8px rgba(100,220,100,.5);
+  animation:livePulse 1.8s ease-in-out infinite;
+}
+@keyframes livePulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+
+/* Metrics */
+.ops-metrics{
+  display:flex;align-items:center;justify-content:space-around;
+  padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.04);
+  position:relative;z-index:1;
+}
+.ops-metric{text-align:center}
+.ops-metric-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:600;color:white;line-height:1;
+}
+.ops-metric-val.ops-metric-green{font-size:13px;color:rgba(100,220,100,.85);font-family:'JetBrains Mono',monospace;letter-spacing:.1em}
+.ops-metric-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:7px;letter-spacing:.18em;color:rgba(255,255,255,.2);
+  margin-top:4px;text-transform:uppercase;
+}
+.ops-metric-div{width:1px;height:32px;background:rgba(255,255,255,.05)}
+
+/* Streams */
+.ops-streams{
+  padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);
+  position:relative;z-index:1;
+}
+.ops-stream{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 18px;
+  border-bottom:1px solid rgba(255,255,255,.03);
+  transition:background .3s;
+}
+.ops-stream:last-child{border-bottom:none}
+.ops-stream:hover{background:rgba(255,255,255,.02)}
+.ops-stream-icon{
+  font-size:14px;color:rgba(255,255,255,.2);
+  width:20px;text-align:center;flex-shrink:0;
+}
+.ops-stream-body{flex:1;min-width:0}
+.ops-stream-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:7.5px;letter-spacing:.22em;color:rgba(255,255,255,.25);
+  margin-bottom:3px;
+}
+.ops-stream-activity{
+  font-size:12px;font-weight:300;color:rgba(255,255,255,.6);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ops-progress-bar{
+  width:60px;height:2px;
+  background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;
+}
+.ops-progress-fill{
+  height:100%;border-radius:2px;
+  background:linear-gradient(90deg,rgba(120,80,255,.7),rgba(160,120,255,.9));
+  transition:width 1s ease;
+}
+.ops-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:7.5px;letter-spacing:.15em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;
+}
+.ops-badge-done{background:rgba(80,180,80,.1);color:rgba(100,220,100,.7);border:1px solid rgba(100,220,100,.15)}
+.ops-badge-live{background:rgba(80,100,255,.1);color:rgba(120,150,255,.8);border:1px solid rgba(120,150,255,.2);animation:badgePulse 2s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{opacity:.7}50%{opacity:1}}
+
+/* Log */
+.ops-log{
+  padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.04);
+  position:relative;z-index:1;
+}
+.ops-log-label{
+  font-family:'JetBrains Mono',monospace;font-size:7px;
+  letter-spacing:.25em;color:rgba(255,255,255,.16);margin-bottom:8px;
+}
+.ops-log-feed{display:flex;flex-direction:column;gap:5px}
+.ops-log-item{
+  font-size:11px;font-weight:300;color:rgba(255,255,255,.35);
+  display:flex;gap:10px;align-items:baseline;
+  transition:color .4s;
+}
+.ops-log-item--new{color:rgba(255,255,255,.65)}
+.ops-log-time{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:rgba(255,255,255,.18);flex-shrink:0;
+}
+
+/* Footer */
+.ops-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 18px;
+  background:rgba(255,255,255,.01);
+  position:relative;z-index:1;
+}
+.ops-footer-text,.ops-footer-right{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:.12em;color:rgba(255,255,255,.16);
+}
+.ops-footer-right{color:rgba(100,220,100,.4)}
+/* MARQUEE */
+.mq-wrap{overflow:hidden;padding:20px 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);background:rgba(255,255,255,.012)}
+.mq-track{display:flex;gap:0;animation:mq 32s linear infinite;width:max-content}
+.mq-track:hover{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.14);white-space:nowrap;
+  padding:0 40px;
+  border-right:1px solid rgba(255,255,255,.05);
+}
+
+/* STATEMENTS */
+.stmts{padding:130px 60px;background:#020202}
+.stmt{
+  border-top:1px solid rgba(255,255,255,.04);
+  position:relative;overflow:hidden;cursor:default;
+}
+.stmt:last-child{border-bottom:1px solid rgba(255,255,255,.04)}
+.stmt p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,4vw,58px);
+  font-weight:400;line-height:1.15;
+  color:rgba(255,255,255,.06);
+  padding:38px 0 38px 80px;
+  transition:color .5s;
+}
+.stmt:hover p{color:rgba(255,255,255,.9)}
+.stmt-n{
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.1);
+  transition:color .5s;
+}
+.stmt:hover .stmt-n{color:rgba(255,255,255,.35)}
+.stmt-bar{position:absolute;bottom:0;left:0;height:1px;width:0;background:linear-gradient(90deg,rgba(180,150,255,.5),transparent);transition:width .9s cubic-bezier(.22,1,.36,1)}
+.stmt:hover .stmt-bar{width:100%}
+
+/* HOW IT WORKS */
+.how{padding:130px 60px}
+.how-inner{max-width:1160px;margin:0 auto}
+.sec-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.32em;text-transform:uppercase;
+  color:rgba(255,255,255,.16);
+  display:flex;align-items:center;gap:18px;margin-bottom:56px;
+}
+.sec-eyebrow::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.04)}
+.sec-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,4.5vw,68px);
+  font-weight:600;line-height:1.1;
+  letter-spacing:-.01em;color:white;margin-bottom:72px;
+}
+.sec-h .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.18)}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
+.step{
+  background:#000;padding:52px 44px;
+  position:relative;overflow:hidden;cursor:default;
+  transition:background .4s;
+}
+.step:hover{background:rgba(255,255,255,.018)}
+.step-n{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.1);
+  margin-bottom:32px;
+}
+.step-icon{
+  width:48px;height:48px;
+  border:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:28px;transition:border-color .4s;
+}
+.step:hover .step-icon{border-color:rgba(180,150,255,.3)}
+.step-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:500;color:white;margin-bottom:14px;
+}
+.step-desc{font-size:13px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.28)}
+.step-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(180,150,255,.6),rgba(100,200,255,.3));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.step:hover .step-bar{transform:scaleX(1)}
+
+/* CAPS */
+.caps{padding:130px 60px;background:#020202}
+.caps-inner{max-width:1160px;margin:0 auto}
+.caps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:0}
+.cap{background:#020202;padding:34px 30px;transition:background .3s;cursor:default}
+.cap:hover{background:rgba(255,255,255,.02)}
+.cap-dot{width:7px;height:7px;border-radius:50%;margin-bottom:20px}
+.t1{background:rgba(100,220,100,.9);box-shadow:0 0 10px rgba(100,220,100,.5)}
+.t2{background:rgba(255,200,80,.9);box-shadow:0 0 10px rgba(255,200,80,.5)}
+.t3{background:rgba(180,140,255,.9);box-shadow:0 0 10px rgba(180,140,255,.5)}
+.cap-title{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);margin-bottom:8px}
+.cap-desc{font-size:11.5px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.25)}
+
+/* PRICING */
+.pricing{padding:130px 60px}
+.pricing-inner{max-width:1160px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
+.plan{background:#000;padding:52px 40px;display:flex;flex-direction:column;position:relative}
+.plan.feat{background:rgba(255,255,255,.025)}
+.plan-top-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(180,140,255,.7),rgba(100,180,255,.4))}
+.plan-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.8);margin-bottom:18px}
+.plan-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:white;margin-bottom:12px}
+.plan-desc{font-size:12.5px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.28);margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.05)}
+.plan-amt{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;color:white;line-height:1}
+.plan-setup{font-size:11px;color:rgba(255,255,255,.22);margin-top:4px}
+.plan-mo{font-size:12px;color:rgba(255,255,255,.22);margin-bottom:36px;margin-top:2px}
+.plan-feats{list-style:none;flex:1;margin-bottom:36px}
+.plan-feats li{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.35);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
+.plan-feats li::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0}
+.plan-btn{display:block;text-align:center;font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;padding:15px;text-decoration:none;transition:all .3s}
+.plan-btn.solid{color:#000;background:white}.plan-btn.solid:hover{background:rgba(180,150,255,.9)}
+.plan-btn.out{color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1)}.plan-btn.out:hover{color:white;border-color:rgba(255,255,255,.4)}
+
+/* TESTI */
+.testi{padding:130px 60px;background:#020202}
+.testi-inner{max-width:1160px;margin:0 auto}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
+.tcard{background:#020202;padding:48px 44px;transition:background .3s}
+.tcard:hover{background:rgba(255,255,255,.015)}
+.tq{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;font-style:italic;
+  line-height:1.7;color:rgba(255,255,255,.65);
+  margin-bottom:36px;
+}
+.tq-mark{font-size:48px;line-height:0;vertical-align:-.55em;color:rgba(180,150,255,.3);margin-right:3px}
+.tauthor{display:flex;align-items:center;gap:14px}
+.tav{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,.3)}
+.tname{font-size:13px;font-weight:500;color:rgba(255,255,255,.6)}
+.trole{font-size:10.5px;font-weight:300;color:rgba(255,255,255,.22);margin-top:2px}
+
+/* CTA */
+.cta{padding:160px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(80,50,180,.13) 0%,transparent 70%);pointer-events:none}
+.cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,6vw,90px);
+  font-weight:600;line-height:1.05;
+  letter-spacing:-.02em;color:white;
+  position:relative;z-index:1;margin-bottom:20px;
+}
+.cta h2 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.18)}
+.cta-sub{font-size:15px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.28);max-width:480px;margin:0 auto 52px;position:relative;z-index:1}
+.cta-btns{display:flex;justify-content:center;gap:24px;position:relative;z-index:1}
+
+/* FAQ */
+.faq-section{padding:120px 60px;max-width:860px;margin:0 auto}
+.faq-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px}
+.faq-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;color:white;line-height:1.1;margin-bottom:64px}
+.faq-title span{font-style:italic;font-weight:300;color:rgba(255,255,255,.22)}
+.faq-item{border-top:1px solid rgba(255,255,255,.05);padding:28px 0}
+.faq-item:last-child{border-bottom:1px solid rgba(255,255,255,.05)}
+.faq-q{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:white;margin-bottom:12px}
+.faq-a{font-size:13px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.32)}
+
+/* FOOTER */
+footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:space-between;background:#000}
+/* FOOTER LOGO CSS MOVED TO BRAND-LOGO CLASSES */
+.foot-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.1)}
+.foot-links{display:flex;gap:28px}
+.foot-link{font-size:11px;color:rgba(255,255,255,.18);text-decoration:none;transition:color .25s}
+.foot-link:hover{color:rgba(255,255,255,.55)}
+
+/* LIVING SKILL TREE */
+.lst-wrap{
+  position:relative;flex:1;min-height:600px;
+  display:flex;align-items:stretch;justify-content:center;
+}
+#lstCanvas{width:100%;height:100%;display:block}
+.lst-tooltip{
+  position:fixed;z-index:500;
+  background:rgba(4,4,8,.98);border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(24px);padding:18px 22px;min-width:220px;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;transform:translateY(6px);border-radius:2px;
+}
+.lst-tooltip.show{opacity:1;transform:translateY(0)}
+.lst-tip-label{
+  font-family:'JetBrains Mono',monospace;font-size:7.5px;
+  letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px;
+}
+.lst-tip-name{
+  font-family:'Cormorant Garamond',serif;font-size:20px;
+  font-weight:600;color:white;margin-bottom:6px;
+}
+.lst-tip-status{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:.12em;margin-bottom:8px;
+}
+.lst-tip-detail{font-size:12px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.7}
+
+
+/* PROOF OF WORK */
+.proof-wrap{
+  flex:1;display:flex;align-items:center;justify-content:flex-start;
+  padding-left:60px;
+}
+.proof-inner{
+  max-width:480px;width:100%;
+}
+.proof-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.18);margin-bottom:32px;
+}
+.proof-items{
+  display:flex;flex-direction:column;gap:0;
+}
+.proof-item{
+  display:grid;
+  grid-template-columns:28px 1fr auto;
+  align-items:baseline;
+  gap:0 16px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  opacity:0;
+  transform:translateY(10px);
+  animation:proofIn .5s ease forwards;
+  animation-delay:var(--d);
+}
+@keyframes proofIn{
+  to{opacity:1;transform:translateY(0)}
+}
+.proof-item:last-child{border-bottom:none}
+.proof-check{
+  font-size:12px;color:rgba(100,220,100,.7);
+  font-family:'JetBrains Mono',monospace;
+  justify-self:center;
+}
+.proof-check--pending{
+  color:rgba(255,195,55,.5);
+  animation:pendingPulse 1.8s ease-in-out infinite;
+}
+@keyframes pendingPulse{0%,100%{opacity:.4}50%{opacity:.9}}
+.proof-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:500;
+  color:rgba(255,255,255,.82);
+  line-height:1.15;letter-spacing:-.01em;
+  white-space:nowrap;
+}
+.proof-text--pending{color:rgba(255,255,255,.35)}
+.proof-meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;letter-spacing:.08em;
+  color:rgba(255,255,255,.18);
+  white-space:nowrap;padding-top:2px;
+}
+.proof-footer{
+  display:flex;align-items:center;gap:10px;
+  margin-top:28px;padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.06);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.15em;
+  color:rgba(255,255,255,.2);
+  opacity:0;animation:proofIn .5s ease forwards;animation-delay:750ms;
+}
+.proof-footer-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(100,220,100,.8);
+  box-shadow:0 0 8px rgba(100,220,100,.5);
+  flex-shrink:0;
+  animation:activePulse 2s ease-in-out infinite;
+}
+@keyframes activePulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hero{padding:0 24px;padding-top:68px}
+  .hero-top{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+    min-height:auto;
+    padding:60px 0 40px;
+    gap:48px;
+  }
+  h1{font-size:clamp(44px,11vw,72px)}
+  .hero-sub{font-size:14px;max-width:100%}
+  .hero-btns{flex-direction:column;align-items:flex-start;gap:20px}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+  .proof-wrap{padding-left:0}
+  .proof-inner{max-width:100%}
+  .proof-item{grid-template-columns:24px 1fr;gap:0 12px}
+  .proof-meta{display:none}
+  .proof-text{font-size:16px;white-space:normal}
+  .proof-eyebrow{margin-bottom:20px}
+}
+@media (max-width: 600px) {
+  nav{padding:0 20px}
+  .hero{padding:0 20px;padding-top:68px}
+  h1{font-size:clamp(38px,12vw,60px)}
+  .hero-top{padding:40px 0 32px;gap:36px}
+  .hero-stats{gap:16px}
+  .stat-v{font-size:26px}
+  .proof-text{font-size:15px}
+  section{padding:80px 20px!important}
+}
+
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div class="tt" id="tt"><div class="tt-tier"></div><div class="tt-name"></div><div class="tt-desc"></div></div>
+<div class="node-card" id="nodeCard">
+  <div class="nc-tier"></div>
+  <div class="nc-name"></div>
+  <div class="nc-desc"></div>
+  <div class="nc-close">✕ close</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo brand-logo"><span class="brand-rasor">RASOR</span><span class="brand-divider"></span><span class="brand-ai">AI</span></a>
+  <div class="nav-links">
+    <div class="path-switcher" id="pathSwitcher">
+      <button class="path-btn" data-path="personal" onclick="setPath('personal')">Private AI</button>
+      <div class="path-divider"></div>
+      <button class="path-btn active" data-path="business" onclick="setPath('business')">For Business</button>
+    </div>
+    <a href="#how" class="nav-a" id="navHow" onclick="navScroll('how',event)">How it works</a>
+    <a href="#pricing" class="nav-a" id="navPricing" onclick="navScroll('pricing',event)">Pricing</a>
+    <a href="#contact" id="navCta" class="nav-cta" onclick="navScroll('contact',event)">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="hero-eyebrow" id="heroEyebrow"><span class="pip"></span> Based in Scottsdale &nbsp;·&nbsp; We deploy anywhere</div>
+        <h1 id="heroH1">Never miss<br><span class="ital">another call.</span></h1>
+        <p class="hero-sub" id="heroSub">We build AI systems that answer your phones, follow up your leads, and run your operations — 24/7, automatically.<br><strong>Built in days. Managed forever. Scottsdale-based.</strong></p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-w" id="heroCta">Book a discovery call <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#how" class="btn-ghost">See how it works →</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-v" id="stat1v">24/7</div><div class="stat-l" id="stat1l">Every call answered</div></div>
+          <div class="sdiv"></div>
+          <div><div class="stat-v" id="stat2v">60s</div><div class="stat-l" id="stat2l">Lead follow-up time</div></div>
+          <div class="sdiv"></div>
+          <div><div class="stat-v" id="stat3v">$697</div><div class="stat-l" id="stat3l">Per month, fully managed</div></div>
+        </div>
+      </div>
+<div class="proof-wrap">
+        <div class="proof-inner">
+          <div class="proof-eyebrow" id="proofEyebrow">TODAY'S OPERATIONS LOG</div>
+          <div class="proof-items" id="proofItems">
+            <div class="proof-item" style="--d:0ms">
+              <span class="proof-check">✓</span>
+              <span class="proof-text">14 inbound calls answered</span>
+              <span class="proof-meta">3 leads qualified, 2 booked · 08:00–09:00 AM</span>
+            </div>
+            <div class="proof-item" style="--d:140ms">
+              <span class="proof-check">✓</span>
+              <span class="proof-text">Follow-up sent to 8 leads</span>
+              <span class="proof-meta">Open rate 74% · CRM updated · 09:15 AM</span>
+            </div>
+            <div class="proof-item" style="--d:280ms">
+              <span class="proof-check">✓</span>
+              <span class="proof-text">Missed call recovered — booked</span>
+              <span class="proof-meta">Via SMS re-engagement flow · 10:47 AM</span>
+            </div>
+            <div class="proof-item" style="--d:420ms">
+              <span class="proof-check">✓</span>
+              <span class="proof-text">Weekly performance report sent</span>
+              <span class="proof-meta">Revenue +12% WoW · Delivered to inbox · 11:00 AM</span>
+            </div>
+            <div class="proof-item" style="--d:560ms">
+              <span class="proof-check proof-check--pending">◎</span>
+              <span class="proof-text proof-text--pending">End-of-day lead summary — compiling</span>
+              <span class="proof-meta">Est. ready 5:00 PM</span>
+            </div>
+          </div>
+          <div class="proof-footer" id="proofFooter">
+            <span class="proof-footer-dot"></span>
+            <span>4 automations ran · 0 staff required · 0 calls missed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track" id="mqt">
+    <span class="mq-item">Email Management</span><span class="mq-item">Calendar & Scheduling</span><span class="mq-item">Morning Briefings</span><span class="mq-item">Voice Receptionist</span><span class="mq-item">Lead Automation</span><span class="mq-item">Competitor Intelligence</span><span class="mq-item">Document Drafting</span><span class="mq-item">Custom Alerts</span><span class="mq-item">Workflow Automation</span><span class="mq-item">Meeting Summaries</span><span class="mq-item">Web Research</span><span class="mq-item">CRM Integration</span>
+    <span class="mq-item">Email Management</span><span class="mq-item">Calendar & Scheduling</span><span class="mq-item">Morning Briefings</span><span class="mq-item">Voice Receptionist</span><span class="mq-item">Lead Automation</span><span class="mq-item">Competitor Intelligence</span><span class="mq-item">Document Drafting</span><span class="mq-item">Custom Alerts</span><span class="mq-item">Workflow Automation</span><span class="mq-item">Meeting Summaries</span><span class="mq-item">Web Research</span><span class="mq-item">CRM Integration</span>
+  </div>
+</div>
+
+<!-- ═══════ PERSONAL PATH ═══════ -->
+<div class="path-section" id="path-personal">
+
+<section class="stmts">
+  <div class="stmt"><p>Your time is the only asset you can't manufacture.</p><span class="stmt-n">01</span><div class="stmt-bar"></div></div>
+  <div class="stmt"><p>The average executive loses 12 hours a week to tasks a machine should handle.</p><span class="stmt-n">02</span><div class="stmt-bar"></div></div>
+  <div class="stmt"><p>We don't sell software. We build your AI, deploy it, and manage it — permanently.</p><span class="stmt-n">03</span><div class="stmt-bar"></div></div>
+  <div class="stmt"><p>The most powerful people alive don't do more. They delegate better.</p><span class="stmt-n">04</span><div class="stmt-bar"></div></div>
+</section>
+
+<!-- PERSONAL: APP PREVIEW -->
+<section style="padding:0;background:#020202;overflow:hidden">
+<div class="split-grid">
+  <div>
+    <div class="sec-eyebrow">Your personal dashboard</div>
+    <h2 class="sec-h">Your life,<br><span class="ital">in your pocket.</span></h2>
+    <p style="font-size:15px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.3);max-width:440px">A private AI system that knows your schedule, reads your inbox, tracks your markets, and answers like a person who's worked for you for years.</p>
+    <div class="feat-list">
+      <div class="feat-item"><div class="feat-dot" style="background:rgba(100,220,100,.9);box-shadow:0 0 8px rgba(100,220,100,.5)"></div><div><div class="feat-title">Live market intelligence</div><div class="feat-desc">BTC, SOL, SPY, gold — real prices, custom alerts. Track whatever you care about.</div></div></div>
+      <div class="feat-item"><div class="feat-dot" style="background:rgba(180,140,255,.9);box-shadow:0 0 8px rgba(180,140,255,.5)"></div><div><div class="feat-title">Inbox that thinks for you</div><div class="feat-desc">Reads every email. Surfaces what matters. Tells you what to do about it.</div></div></div>
+      <div class="feat-item"><div class="feat-dot" style="background:rgba(255,200,80,.9);box-shadow:0 0 8px rgba(255,200,80,.5)"></div><div><div class="feat-title">Ask anything, get real answers</div><div class="feat-desc">Not a chatbot — a system that knows your life and gets smarter every day.</div></div></div>
+    </div>
+    <div style="margin-top:44px"><a href="#pricing" class="btn-w">See pricing →</a></div>
+  </div>
+  <div class="app-frame">
+    <div class="app-bar"><div class="app-d app-d-r"></div><div class="app-d app-d-y"></div><div class="app-d app-d-g"></div><div class="app-bar-title">RASOR AI · YOUR DASHBOARD</div></div>
+    <div class="app-row">
+      <div class="app-card"><div class="app-lbl">Bitcoin</div><div class="app-val">$68,244</div><div class="app-chg up">↑ +1.24%</div></div>
+      <div class="app-card"><div class="app-lbl">Solana</div><div class="app-val">$86.03</div><div class="app-chg up">↑ +2.08%</div></div>
+    </div>
+    <div class="app-row">
+      <div class="app-card"><div class="app-lbl">S&amp;P 500</div><div class="app-val">$598</div><div class="app-chg dn">↓ −0.31%</div></div>
+      <div class="app-card"><div class="app-lbl">Gold</div><div class="app-val">$2,944</div><div class="app-chg up">↑ +0.87%</div></div>
+    </div>
+    <div class="app-box"><div class="app-box-hd">Today's Inbox · 3 need action</div>
+      <div class="app-email"><div class="app-email-dot"></div><div class="app-email-txt">New lead from contact form — draft reply ready</div></div>
+      <div class="app-email"><div class="app-email-dot" style="background:rgba(255,200,80,.7)"></div><div class="app-email-txt">Contract expiring next week — action needed</div></div>
+      <div class="app-email"><div class="app-email-dot" style="background:rgba(100,220,100,.6)"></div><div class="app-email-txt">Weekly report generated and filed</div></div>
+    </div>
+    <div class="app-box" style="margin-top:8px">
+      <div class="app-chat-msg"><span class="app-tag app-tag-u">YOU</span>What should I focus on today?</div>
+      <div class="app-chat-msg"><span class="app-tag app-tag-j">JARVIS</span>Reply to the lead first — I drafted a response for your approval. Then review the contract renewal before Thursday. Markets are green, nothing urgent there.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PERSONAL: HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="sec-eyebrow">How it works</div>
+    <h2 class="sec-h">Live in 48 hours.<br><span class="ital">Built around you.</span></h2>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><div class="step-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg></div><div class="step-title">30-minute deep dive</div><div class="step-desc">We learn how you work — your tools, routines, communication style, what wastes your time. No questionnaires. Just a conversation.</div><div class="step-bar"></div></div>
+      <div class="step"><div class="step-n">02</div><div class="step-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg></div><div class="step-title">We build your AI in 48 hours</div><div class="step-desc">Email connected. Calendar synced. Dashboard configured. Markets set up. Personality trained. Your personal AI is live and tested before the weekend.</div><div class="step-bar"></div></div>
+      <div class="step"><div class="step-n">03</div><div class="step-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></div><div class="step-title">You use it. We improve it.</div><div class="step-desc">Talk to your AI like a person. We handle every update, expansion, and fix in the background. It gets better every week — without you thinking about it.</div><div class="step-bar"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL: CAPABILITIES -->
+<section class="caps" id="capabilities">
+  <div class="caps-inner">
+    <div class="sec-eyebrow">What it does</div>
+    <h2 class="sec-h">Everything a great<br><span class="ital">chief of staff does.</span></h2>
+    <div class="caps-grid">
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Email & Inbox</div><div class="cap-desc">Reads, prioritizes, drafts replies. You approve in one tap or let it handle it.</div></div>
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Calendar & Scheduling</div><div class="cap-desc">Books, reschedules, sends reminders. Conflicts handled before you notice them.</div></div>
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Live Market Dashboard</div><div class="cap-desc">Crypto, equities, gold — live prices and alerts. Customized to your portfolio.</div></div>
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Morning Briefing</div><div class="cap-desc">Everything you need to know before your first meeting. Markets, news, today's agenda.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Personal iOS App</div><div class="cap-desc">A native iOS app built for your Rasor AI system. Chat, voice, markets, briefings — your AI in your pocket, everywhere you go.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Research on Demand</div><div class="cap-desc">Deep research on any topic — person, company, deal, market — delivered in minutes.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Persistent Memory</div><div class="cap-desc">Remembers every preference, every conversation, every detail. Gets sharper over time.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Document Drafting</div><div class="cap-desc">Proposals, messages, reports — in your voice, ready to send or tweak.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Voice Access</div><div class="cap-desc">Call your AI. Hands-free commands, answers, and briefings from anywhere.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Custom Alerts</div><div class="cap-desc">Price targets, deadline warnings, news triggers — whatever you need to know, instantly.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Task Tracking</div><div class="cap-desc">Every follow-up, every commitment remembered. Nothing falls through.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Multi-Device</div><div class="cap-desc">Phone, desktop, watch, voice — your AI is wherever you are.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL: PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="sec-eyebrow">Investment</div>
+    <h2 class="sec-h">Less than a<br><span class="ital">part-time hire.</span></h2>
+    <p style="font-size:14px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.28);max-width:600px;margin-bottom:56px">These are our complete systems — but we don't work from a menu. If you have one specific thing you want automated, one workflow that's wasting your time, or an idea that doesn't fit a package — tell us. We'll figure out the best way to build it.</p>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">AI Operator</div>
+        <div class="plan-desc">Your personal AI — manages your day end to end. Inbox, calendar, research, messaging.</div>
+        <div class="plan-amt">$3,500</div>
+        <div class="plan-setup">one-time setup · uses your existing Mac or we provide one</div>
+        <div class="plan-mo">+ $597 / month</div>
+        <ul class="plan-feats">
+          <li>Email & inbox management</li><li>Calendar & scheduling</li><li>Daily morning briefing</li><li>Research on demand</li><li>Custom messaging interface</li><li>Persistent memory</li>
+        </ul>
+        <a href="#contact" class="plan-btn out">Apply for a Demo</a>
+      </div>
+      <div class="plan feat">
+        <div class="plan-top-bar"></div>
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">AI Executive Suite</div>
+        <div class="plan-desc">Personal + business integrated. Deep workflow automation, team tools, and a private AI that runs both halves of your life.</div>
+        <div class="plan-amt">$7,500</div>
+        <div class="plan-setup">one-time setup · dedicated hardware included</div>
+        <div class="plan-mo">+ $997 / month</div>
+        <ul class="plan-feats">
+          <li>Everything in AI Operator</li><li>Business tool integrations (CRM, Slack, Notion)</li><li>Deep workflow automation</li><li>Weekly AI business reports</li><li>Voice access</li><li>Monthly tuning sessions</li><li>Priority support</li>
+        </ul>
+        <a href="#contact" class="plan-btn solid">Apply for a Demo</a>
+      </div>
+      <div class="plan">
+        <div class="plan-name">AI Chief of Staff</div>
+        <div class="plan-desc">Total life + business management. Multiple AI agents, relationship management, custom persona — everything white-glove.</div>
+        <div class="plan-amt">$15,000+</div>
+        <div class="plan-setup">scoped to your specific needs</div>
+        <div class="plan-mo">+ $1,500 / month</div>
+        <ul class="plan-feats">
+          <li>Everything in Executive Suite</li><li>Email AI drafting in your voice</li><li>Calendar AI with meeting prep</li><li>Relationship management</li><li>Custom AI persona & name</li><li>Quarterly deep-tune sessions</li><li>Direct line to founder</li>
+        </ul>
+        <a href="#contact" class="plan-btn out">Apply for a Demo</a>
+      </div>
+    </div>
+    <div style="margin-top:20px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.14)">Already have a Mac? We'll use it — setup fee reduced accordingly.</div>
+  </div>
+</section>
+
+<!-- PERSONAL CTA -->
+<!-- PERSONAL FAQ -->
+<section class="faq-section">
+  <div class="faq-eyebrow">Common questions</div>
+  <h2 class="faq-title">Everything you <span>want to know</span></h2>
+  <div class="faq-item">
+    <div class="faq-q">Is my data private?</div>
+    <div class="faq-a">Yes. Your system runs on dedicated hardware — nothing is shared with other clients. Your conversations, calendar, and inbox data never train any public model. It's yours, fully isolated.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need to be technical?</div>
+    <div class="faq-a">Not at all. We handle everything — setup, configuration, and ongoing maintenance. Your job is to use it. If something feels off, you message us and it gets fixed. Usually same day.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What AI does it run on?</div>
+    <div class="faq-a">We use the best available models depending on the task — Claude, GPT-4, and others — routed intelligently behind the scenes. You don't manage any of it. You just talk to your AI.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How does the iOS app work?</div>
+    <div class="faq-a">Your personal Rasor AI app gives you a direct line to your system from your phone. Chat, voice commands, market alerts, morning briefings — everything in one place, branded to you.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What if I want to cancel?</div>
+    <div class="faq-a">No long-term contracts. Cancel anytime with 30 days notice. The setup fee covers your hardware and build — that's yours to keep regardless.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How fast can I be up and running?</div>
+    <div class="faq-a">Most clients are live within 48 hours of the onboarding call. We move fast. The 30-minute discovery call is enough for us to scope and start building immediately after.</div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-glow"></div>
+  <h2>Your AI.<br><span class="ital">Running everything.</span></h2>
+  <p class="cta-sub">Limited availability. We take on a small number of private AI clients to ensure white-glove delivery.<br><span style="font-size:12px;opacity:.45;font-family:'JetBrains Mono',monospace;letter-spacing:.06em">Apply below. 20-minute demo. We show you ours first.</span></p>
+  <div class="cta-btns"><a href="mailto:private@rasor.ai?subject=Private AI — Demo Request" class="btn-w">Apply for a demo →</a></div>
+</section>
+
+</div><!-- /path-personal -->
+
+
+<!-- ═══════ BUSINESS PATH ═══════ -->
+<div class="path-section active" id="path-business">
+
+<section class="stmts">
+  <div class="stmt"><p>Every missed call is a missed client. Every slow follow-up is a lost deal.</p><span class="stmt-n">01</span><div class="stmt-bar"></div></div>
+  <div class="stmt"><p>A part-time receptionist costs $2,500/month and calls in sick. We cost $697 and work 24/7.</p><span class="stmt-n">02</span><div class="stmt-bar"></div></div>
+  <div class="stmt"><p>We don't sell software. We build your AI, deploy it, and run it — permanently.</p><span class="stmt-n">03</span><div class="stmt-bar"></div></div>
+  <div class="stmt"><p>Your competitors will do this eventually. You can do it first.</p><span class="stmt-n">04</span><div class="stmt-bar"></div></div>
+</section>
+
+<!-- BIZ: STATS -->
+<section style="padding:0 60px 130px">
+  <div style="max-width:1160px;margin:0 auto">
+    <div class="biz-stats">
+      <div class="biz-stat"><div class="biz-stat-v">24/7</div><div class="biz-stat-l">Every call answered.<br>Nights, weekends, holidays.</div></div>
+      <div class="biz-stat"><div class="biz-stat-v">&lt;60s</div><div class="biz-stat-l">Lead follow-up time.<br>Before your competitor even sees it.</div></div>
+      <div class="biz-stat"><div class="biz-stat-v">48hr</div><div class="biz-stat-l">Discovery call to live.<br>We move fast because your revenue can't wait.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BIZ: CAPABILITIES (same visual as personal caps grid) -->
+<section class="caps" style="background:#000">
+  <div class="caps-inner">
+    <div class="sec-eyebrow">What we deploy</div>
+    <h2 class="sec-h">What your business AI<br><span class="ital">runs for you.</span></h2>
+    <div class="caps-grid">
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">24/7 Voice Receptionist</div><div class="cap-desc">Answers every call, qualifies leads, books appointments. No missed calls, no missed revenue.</div></div>
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Lead Capture & CRM</div><div class="cap-desc">Every inbound lead captured, qualified, and logged — automatically. Your pipeline never goes cold.</div></div>
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Customer Support AI</div><div class="cap-desc">Handles FAQs, order status, returns, and escalations. Your team only sees the hard ones.</div></div>
+      <div class="cap"><div class="cap-dot t1"></div><div class="cap-title">Client Intake Automation</div><div class="cap-desc">Forms, scheduling, follow-ups, and onboarding — processed without touching your staff.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Appointment Scheduling</div><div class="cap-desc">Books, reminds, reschedules, and recovers no-shows. Your calendar fills itself.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Workflow Automation</div><div class="cap-desc">Any repeatable process — lead nurturing, reporting, vendor comms — running end-to-end.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Document Generation</div><div class="cap-desc">Proposals, contracts, and reports generated automatically. Your brand, your voice.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Email & Follow-up Sequences</div><div class="cap-desc">Drip campaigns, follow-ups, and outreach — personalized and sent on schedule.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Performance Reporting</div><div class="cap-desc">Weekly dashboards and summaries delivered automatically. Know your numbers without pulling them.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Competitor Intelligence</div><div class="cap-desc">Tracks competitor moves, pricing, and news. Always the most informed operator in the room.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Custom Integrations</div><div class="cap-desc">Connects to your existing tools — CRM, calendar, POS, EHR, and more. No rip-and-replace.</div></div>
+      <div class="cap"><div class="cap-dot t3"></div><div class="cap-title">Multi-Location Support</div><div class="cap-desc">One AI system scaled across all your locations. Consistent experience, centralized control.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BIZ: HOW -->
+<section class="how" id="biz-how" style="background:#020202">
+  <div class="how-inner">
+    <div class="sec-eyebrow">How it works</div>
+    <h2 class="sec-h">Deployed fast.<br><span class="ital">Running forever.</span></h2>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><div class="step-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg></div><div class="step-title">Discovery call</div><div class="step-desc">We map your workflows, identify the highest-ROI automation targets, and scope exactly what we're building. One call, complete picture.</div><div class="step-bar"></div></div>
+      <div class="step"><div class="step-n">02</div><div class="step-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg></div><div class="step-title">We build & integrate</div><div class="step-desc">Voice agents, workflows, integrations — connected to your existing tools and live within 1–5 business days. Tested before we hand it over.</div><div class="step-bar"></div></div>
+      <div class="step"><div class="step-n">03</div><div class="step-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></div><div class="step-title">We manage it. You scale.</div><div class="step-desc">Monitoring, improvements, and expansion — ongoing. As your business grows, your AI grows with it. We run the infrastructure.</div><div class="step-bar"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BIZ: PRICING -->
+<section class="pricing" id="biz-pricing">
+  <div class="pricing-inner">
+    <div class="sec-eyebrow">Investment</div>
+    <h2 class="sec-h">Replace a hire.<br><span class="ital">Not your budget.</span></h2>
+    <p style="font-size:14px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.28);max-width:600px;margin-bottom:56px">Full systems or a single automation — we work both ways. If there's one process draining your team's time, one gap in your operations, or something completely custom, bring it to the call. We'll scope it and get it built.</p>
+    <div class="biz-pg">
+      <div class="biz-plan">
+        <div class="biz-plan-name">Never Miss a Call</div>
+        <div class="biz-plan-desc">AI voice receptionist that answers every call, books appointments, and captures leads — 24/7, no staff needed.</div>
+        <div class="biz-price">$2,500</div>
+        <div class="biz-price-sub">one-time setup · + $697 / month · fully managed</div>
+        <ul class="biz-feats">
+          <li>24/7 AI voice receptionist</li><li>Appointment booking</li><li>FAQ handling (hours, services, pricing)</li><li>Missed call recovery via SMS</li><li>Weekly call summary report</li><li>CRM integration</li>
+        </ul>
+        <a href="#contact" class="plan-btn out" style="margin-top:auto">Get Started</a>
+      </div>
+      <div class="biz-plan feat">
+        <div class="biz-plan-bar"></div>
+        <div class="biz-tag">Best Value</div>
+        <div class="biz-plan-name">Never Lose a Lead</div>
+        <div class="biz-plan-desc">Voice receptionist + automated lead follow-up + website chatbot. Your entire front office — captured, qualified, and booked.</div>
+        <div class="biz-price">$5,000</div>
+        <div class="biz-price-sub">one-time setup · + $997 / month · fully managed</div>
+        <ul class="biz-feats">
+          <li>Everything in "Never Miss a Call"</li><li>Automated lead follow-up (SMS + email)</li><li>Website AI chatbot</li><li>3-touch follow-up sequences</li><li>Monthly performance reporting</li><li>Priority support</li>
+        </ul>
+        <a href="#contact" class="plan-btn solid" style="margin-top:auto">Get Started</a>
+      </div>
+      <div class="biz-plan biz-plan-full" style="padding:48px 44px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+          <div>
+            <div class="biz-tag">Enterprise</div>
+            <div class="biz-plan-name" style="margin-top:8px">Custom Build</div>
+            <div class="biz-plan-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0">Multi-location, unlimited automations, custom integrations, dedicated AI engineer. Scoped to your exact operations.</div>
+          </div>
+          <div>
+            <div class="biz-price">Custom</div>
+            <div class="biz-price-sub">Scoped on discovery call</div>
+            <a href="#contact" class="plan-btn out" style="margin-top:24px;display:inline-block">Book a Discovery Call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.14)">Already have a qualifying machine? We'll use it — setup fee reduced accordingly.</div>
+  </div>
+</section>
+
+<!-- BIZ FAQ -->
+<section class="faq-section">
+  <div class="faq-eyebrow">Common questions</div>
+  <h2 class="faq-title">Everything you <span>want to know</span></h2>
+  <div class="faq-item">
+    <div class="faq-q">How long does implementation take?</div>
+    <div class="faq-a">Most systems are live within 48–72 hours of the discovery call. Complex multi-system builds may take up to a week. We scope everything upfront so there are no surprises.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do we need to change our existing tools?</div>
+    <div class="faq-a">No. We build on top of what you already use — your CRM, your inbox, your scheduling software. No migration required. We plug in, not replace.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is our customer and business data secure?</div>
+    <div class="faq-a">Yes. Your system runs on dedicated infrastructure — not shared servers. Your business data is never used to train public models. We can provide a detailed security overview on request.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What if the AI makes a mistake?</div>
+    <div class="faq-a">Every system is built with human-in-the-loop checkpoints for high-stakes actions. Your team approves before anything critical goes out. We monitor and fix issues proactively — usually before you notice them.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do you offer ongoing support?</div>
+    <div class="faq-a">Yes — all plans include ongoing management. As your business changes, your AI adapts. Updates, new automations, and fixes are handled by us in the background.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What industries do you work with?</div>
+    <div class="faq-a">We've built for real estate, professional services, e-commerce, and executive teams. If your business handles leads, clients, scheduling, or communications — we can automate it.</div>
+  </div>
+</section>
+
+<!-- BIZ CTA -->
+<section class="cta" id="biz-contact">
+  <div class="cta-glow"></div>
+  <h2>Stop losing calls.<br><span class="ital">Start growing.</span></h2>
+  <p class="cta-sub">Most businesses start at $2,500 setup + $697/mo. We scope everything on a 15-minute call. No pitch — just diagnosis and a demo.<br><span style="font-size:12px;opacity:.45;font-family:'JetBrains Mono',monospace;letter-spacing:.06em">Or start with a $500 AI Audit — we evaluate your operations and tell you exactly where AI saves you money.</span></p>
+  <div class="cta-btns">
+    <a href="mailto:book@rasor.ai?subject=Discovery Call — Business AI" class="btn-w">Book a discovery call →</a>
+    <a href="mailto:book@rasor.ai?subject=AI Audit Request" class="btn-ghost">Or start with an AI Audit →</a>
+  </div>
+</section>
+
+</div><!-- /path-business -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo brand-logo"><span class="brand-rasor">RASOR</span><span class="brand-divider"></span><span class="brand-ai">AI</span></div>
+  <div class="foot-copy">© 2026 Rasor Security Solutions LLC dba Rasor AI · Scottsdale, AZ</div>
+  <div class="foot-links">
+    <a href="mailto:book@rasor.ai" class="foot-link">book@rasor.ai</a>
+  </div>
+</footer>
+
+<script>
+/* ── Tooltip + click interaction ── */
+
+/* ── Path Switching ── */
+var heroContent = {
+  personal: {
+    h1: 'Your AI.<br><span class="ital">Running everything.</span>',
+    heroEyebrow: 'Scottsdale-based &nbsp;·&nbsp; Limited availability',
+    sub: 'A private AI system built around you. Manages your schedule, drafts your emails, handles your research, and runs the thousand small things that eat your day.<br><strong>Like a chief of staff who never sleeps.</strong>',
+    cta: 'Apply for a demo',
+    stats: [{v:'48hr',l:'Setup to live'},{v:'24/7',l:'Always working'},{v:'100%',l:'Built around you'}],
+    eyebrow: "TODAY'S ACTIVITY LOG",
+    items: [
+      {check:'✓',cls:'',text:'Drafted your LOI reply',meta:'Sent to Marcus Chen · 08:12 AM'},
+      {check:'✓',cls:'',text:'Rescheduled the Davidson call',meta:'Moved 9am → 10am · 09:04 AM'},
+      {check:'✓',cls:'',text:'Answered & qualified two leads',meta:'Added to pipeline · 09:47 AM'},
+      {check:'✓',cls:'',text:'Flagged the Westgate deadline',meta:'Brief ready · 10:33 AM'},
+      {check:'◎',cls:' proof-check--pending',textCls:' proof-text--pending',text:'Weekly report — drafting now',meta:'Est. ready 11:30 AM'}
+    ],
+    footer: '4 tasks completed · 1 in progress · 0 needed you'
+  },
+  business: {
+    h1: 'Never miss<br><span class="ital">another call.</span>',
+    heroEyebrow: 'Scottsdale-based &nbsp;·&nbsp; Deployed in days',
+    sub: 'We build AI systems that answer your phones, follow up your leads, and run your operations — 24/7, automatically.<br><strong>Built in days. Managed forever. Scottsdale-based.</strong>',
+    cta: 'Book a discovery call',
+    stats: [{v:'24/7',l:'Every call answered'},{v:'60s',l:'Lead follow-up time'},{v:'$697',l:'Per month, fully managed'}],
+    eyebrow: "TODAY'S OPERATIONS LOG",
+    items: [
+      {check:'✓',cls:'',text:'14 inbound calls answered',meta:'3 qualified, 2 booked · 08:00–09:00 AM'},
+      {check:'✓',cls:'',text:'Follow-up sent to 8 leads',meta:'74% open rate · CRM updated · 09:15 AM'},
+      {check:'✓',cls:'',text:'Missed call recovered — booked',meta:'Via SMS re-engagement · 10:47 AM'},
+      {check:'✓',cls:'',text:'Weekly performance report sent',meta:'Revenue +12% WoW · 11:00 AM'},
+      {check:'◎',cls:' proof-check--pending',textCls:' proof-text--pending',text:'End-of-day lead summary — compiling',meta:'Est. ready 5:00 PM'}
+    ],
+    footer: '4 automations ran · 0 staff required · 0 calls missed'
+  }
+};
+
+function setPath(p){
+  document.querySelectorAll('.path-section').forEach(s=>s.classList.remove('active'));
+  var t=document.getElementById('path-'+p);if(t)t.classList.add('active');
+  document.querySelectorAll('.path-btn').forEach(b=>b.classList.remove('active'));
+  var a=document.querySelector('.path-btn[data-path="'+p+'"]');if(a)a.classList.add('active');
+  var c=document.getElementById('navCta');
+  if(c){c.textContent=p==='business'?'Book a Discovery Call':'Book a Call';}
+
+  // Swap hero content
+  var h=heroContent[p];
+  var h1=document.getElementById('heroH1');
+  if(h1)h1.innerHTML=h.h1;
+  var ey2=document.getElementById('heroEyebrow');
+  if(ey2)ey2.innerHTML='<span class="pip"></span> '+h.heroEyebrow;
+  var sub=document.getElementById('heroSub');
+  if(sub)sub.innerHTML=h.sub;
+  var cta=document.getElementById('heroCta');
+  if(cta){cta.innerHTML=h.cta+' <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';}
+  if(h.stats){
+    for(var i=0;i<h.stats.length;i++){
+      var sv=document.getElementById('stat'+(i+1)+'v');
+      var sl=document.getElementById('stat'+(i+1)+'l');
+      if(sv)sv.textContent=h.stats[i].v;
+      if(sl)sl.textContent=h.stats[i].l;
+    }
+  }
+  var ey=document.getElementById('proofEyebrow');
+  if(ey)ey.textContent=h.eyebrow;
+  var items=document.getElementById('proofItems');
+  if(items){
+    items.innerHTML=h.items.map(function(it,i){
+      return '<div class="proof-item" style="--d:'+i*140+'ms">'+
+        '<span class="proof-check'+it.cls+'">'+it.check+'</span>'+
+        '<span class="proof-text'+(it.textCls||'')+'">'+it.text+'</span>'+
+        '<span class="proof-meta">'+it.meta+'</span>'+
+      '</div>';
+    }).join('');
+  }
+  var ft=document.getElementById('proofFooter');
+  if(ft){ft.innerHTML='<span class="proof-footer-dot"></span><span>'+h.footer+'</span>';}
+
+  try{localStorage.setItem('rasor-path',p)}catch(e){}
+  setTimeout(function(){
+    document.querySelectorAll('.path-section.active .step,.path-section.active .cap,.path-section.active .plan,.path-section.active .uc,.path-section.active .biz-stat,.path-section.active .biz-plan').forEach(function(el){
+      el.style.opacity='0';el.style.transform='translateY(24px)';
+      el.style.transition='opacity .75s ease, transform .75s ease';
+      obs.observe(el);
+    });
+  },50);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+try{var sp=localStorage.getItem('rasor-path');if(sp==='personal')setPath('personal')}catch(e){}
+
+/* ── Cursor ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='50px';ring.style.height='50px';ring.style.borderColor='rgba(255,255,255,.22)'});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(255,255,255,.1)'});
+});
+
+/* ── Nav scroll ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>40));
+
+/* ── Path-aware nav anchors ── */
+function navScroll(section, e){
+  e && e.preventDefault();
+  var path = document.querySelector('.path-btn.active') ? document.querySelector('.path-btn.active').getAttribute('data-path') : 'personal';
+  var prefix = path === 'business' ? 'biz-' : '';
+  var id = prefix + section;
+  var el = document.getElementById(id);
+  if(!el) el = document.getElementById(section); // fallback
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ── Scroll reveal ── */
+const obs=new IntersectionObserver(ents=>{
+  ents.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
+},{threshold:.12});
+document.querySelectorAll('.step,.cap,.plan,.tcard').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(24px)';
+  el.style.transition='opacity .75s ease, transform .75s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
