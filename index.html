@@ -756,9 +756,9 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
 }
 .proof-item{
   display:grid;
-  grid-template-columns:28px 1fr auto;
+  grid-template-columns:28px 1fr;
   align-items:baseline;
-  gap:0 16px;
+  gap:2px 16px;
   padding:14px 0;
   border-bottom:1px solid rgba(255,255,255,.04);
   opacity:0;
@@ -785,14 +785,15 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
   font-size:20px;font-weight:500;
   color:rgba(255,255,255,.82);
   line-height:1.15;letter-spacing:-.01em;
-  white-space:nowrap;
+  white-space:normal;
 }
 .proof-text--pending{color:rgba(255,255,255,.35)}
 .proof-meta{
   font-family:'JetBrains Mono',monospace;
   font-size:8.5px;letter-spacing:.08em;
   color:rgba(255,255,255,.18);
-  white-space:nowrap;padding-top:2px;
+  white-space:normal;padding-top:2px;
+  grid-column:2;
 }
 .proof-footer{
   display:flex;align-items:center;gap:10px;
@@ -831,7 +832,7 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
   .hero-stats{gap:24px;flex-wrap:wrap}
   .proof-wrap{padding-left:0}
   .proof-inner{max-width:100%}
-  .proof-item{grid-template-columns:24px 1fr;gap:0 12px}
+  .proof-item{grid-template-columns:24px 1fr;gap:2px 12px}
   .proof-meta{display:none}
   .proof-text{font-size:16px;white-space:normal}
   .proof-eyebrow{margin-bottom:20px}
