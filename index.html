@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rasor AI — Your AI. Running Everything.">
 <meta name="twitter:description" content="AI voice agents, lead automation, and workflow operations for Scottsdale businesses. Built in days. Managed forever.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <style>
 /* PATH SWITCHER */
 .path-switcher{display:inline-flex;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);overflow:hidden}
@@ -20,7 +21,7 @@
 .path-btn.active{background:white;color:#000;font-weight:500}
 .path-divider{width:1px;height:14px;background:rgba(255,255,255,.1);flex-shrink:0}
 /* PATH SECTIONS */
-.path-section{display:none}.path-section.active{display:block}
+.path-section{display:none;opacity:0;transition:opacity .4s ease}.path-section.active{display:block;opacity:1}
 /* APP MOCKUP */
 .app-frame{background:rgba(6,6,10,.97);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;box-shadow:0 40px 120px rgba(40,20,120,.3),0 8px 32px rgba(0,0,0,.8);overflow:hidden;position:relative}
 .app-frame::before{content:'';position:absolute;inset:0;border-radius:20px;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(120,80,255,.07),transparent 60%);pointer-events:none}
@@ -965,14 +966,20 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
 <!-- CREDIBILITY (both paths) -->
 <div class="section-divider"></div>
 <section style="padding:64px 60px;background:#000;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="max-width:900px;margin:0 auto;text-align:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:40px">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:28px">Built in Scottsdale. Deployed for Scottsdale.</div>
-    <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap">
-      <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(100,220,100,.7);flex-shrink:0"></span>Local, in-person service</div>
-      <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(255,200,80,.7);flex-shrink:0"></span>We build it, we run it, you own it</div>
-      <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(180,140,255,.7);flex-shrink:0"></span>Your AI runs on dedicated infrastructure</div>
+  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:2px">
+    <div style="background:#000;padding:44px 40px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.25em;color:rgba(255,200,80,.5);margin-bottom:16px">OUR STORY</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:white;line-height:1.2;margin-bottom:16px">We've been serving Scottsdale businesses for years.</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.3)">Rasor Security Solutions installed cameras, access systems, and smart networks for local businesses. We know the market because we've been in it. Now we're bringing AI to the same clients we've been protecting.</div>
     </div>
-    <div style="margin-top:24px;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;font-style:italic;color:rgba(255,255,255,.22)">Rasor Security → Rasor AI. Same trust, new technology.</div>
+    <div style="background:#000;padding:44px 40px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.25em;color:rgba(100,220,100,.5);margin-bottom:16px">WHY US</div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:flex-start;gap:12px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(100,220,100,.7);flex-shrink:0;margin-top:7px"></span><div><div style="font-size:13px;font-weight:500;color:rgba(255,255,255,.6)">Local, in-person</div><div style="font-size:11.5px;font-weight:300;color:rgba(255,255,255,.25);margin-top:3px">We're in Scottsdale. We meet you. We know your market.</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:12px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(255,200,80,.7);flex-shrink:0;margin-top:7px"></span><div><div style="font-size:13px;font-weight:500;color:rgba(255,255,255,.6)">You own everything</div><div style="font-size:11.5px;font-weight:300;color:rgba(255,255,255,.25);margin-top:3px">Your AI, your data, your infrastructure. Nothing shared.</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:12px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(180,140,255,.7);flex-shrink:0;margin-top:7px"></span><div><div style="font-size:13px;font-weight:500;color:rgba(255,255,255,.6)">We run it forever</div><div style="font-size:11.5px;font-weight:300;color:rgba(255,255,255,.25);margin-top:3px">Not a setup-and-leave shop. We manage and improve, ongoing.</div></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1155,6 +1162,34 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
   </div>
 </section>
 
+<!-- BIZ: LIVE CALL DEMO -->
+<div class="section-divider"></div>
+<section style="padding:160px 60px;background:#020206;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 40%,rgba(60,40,160,.06),transparent);pointer-events:none"></div>
+<div style="max-width:900px;margin:0 auto;position:relative;z-index:1">
+  <div class="sec-eyebrow">See it in action</div>
+  <h2 class="sec-h">A real call.<br><span class="ital">Handled by AI.</span></h2>
+  <div id="callDemo" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:36px;box-shadow:0 20px 60px rgba(0,0,0,.4)">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.04)">
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(100,220,100,.8);box-shadow:0 0 8px rgba(100,220,100,.5);animation:livePulse 1.8s ease-in-out infinite"></div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.25em;color:rgba(255,255,255,.2)">LIVE CALL — INBOUND · (480) 555-0192</span>
+      <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;color:rgba(255,255,255,.12)" id="callTimer">0:00</span>
+    </div>
+    <div id="callMessages" style="min-height:280px;display:flex;flex-direction:column;gap:16px"></div>
+    <div id="callResult" style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.04);opacity:0;transition:opacity .6s ease">
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;color:rgba(100,220,100,.6)">✓ APPOINTMENT BOOKED</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;color:rgba(180,140,255,.5)">✓ SMS CONFIRMATION SENT</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;color:rgba(255,200,80,.5)">✓ CRM UPDATED</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px">
+    <button id="replayCall" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.2);background:none;border:1px solid rgba(255,255,255,.08);padding:10px 24px;cursor:pointer;transition:all .3s;text-transform:uppercase" onmouseover="this.style.borderColor='rgba(255,255,255,.3)';this.style.color='rgba(255,255,255,.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.2)'">↻ Replay demo</button>
+  </div>
+</div>
+</section>
+
 <!-- BIZ: HOW -->
 <div class="section-divider"></div>
 <section class="how" id="biz-how" style="background:#020204">
@@ -1214,6 +1249,23 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
   </div>
 </section>
 
+<!-- BIZ: AI AUDIT CARD -->
+<div class="section-divider"></div>
+<section style="padding:80px 60px;background:#000">
+  <div style="max-width:800px;margin:0 auto;background:rgba(255,200,80,.02);border:1px solid rgba(255,200,80,.08);border-radius:2px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.25em;color:rgba(255,200,80,.6);margin-bottom:12px">NOT READY FOR A FULL SYSTEM?</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:white;margin-bottom:12px">Start with an AI Audit.</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.3)">We evaluate your operations and show you exactly where AI saves time and money. You get a clear report with specific recommendations — no commitment required.</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;color:white;margin-bottom:4px">$500</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.2);margin-bottom:20px">Applied to setup if you proceed</div>
+      <a href="mailto:book@rasor.ai?subject=AI Audit Request" class="plan-btn out" style="display:inline-block;white-space:nowrap">Request an Audit</a>
+    </div>
+  </div>
+</section>
+
 <!-- BIZ FAQ -->
 <div class="section-divider"></div>
 <section class="faq-section">
@@ -1262,6 +1314,18 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
     <a href="mailto:book@rasor.ai?subject=Discovery Call — Business AI" class="btn-w">Book a discovery call →</a>
     <a href="mailto:book@rasor.ai?subject=AI Audit Request" class="btn-ghost">Or start with an AI Audit →</a>
   </div>
+  <!-- Inline Contact Form -->
+  <div style="max-width:480px;margin:48px auto 0;text-align:left;position:relative;z-index:1">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;color:rgba(255,255,255,.15);margin-bottom:20px;text-transform:uppercase;text-align:center">Or leave your info — we'll reach out</div>
+    <form id="bizContactForm" style="display:flex;flex-direction:column;gap:12px">
+      <input type="text" name="name" placeholder="Your name" required style="font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:white;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:14px 18px;outline:none;transition:border-color .3s;border-radius:2px" onfocus="this.style.borderColor='rgba(255,255,255,.2)'" onblur="this.style.borderColor='rgba(255,255,255,.08)'">
+      <input type="tel" name="phone" placeholder="Phone number" required style="font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:white;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:14px 18px;outline:none;transition:border-color .3s;border-radius:2px" onfocus="this.style.borderColor='rgba(255,255,255,.2)'" onblur="this.style.borderColor='rgba(255,255,255,.08)'">
+      <input type="text" name="business" placeholder="Business name (optional)" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:white;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:14px 18px;outline:none;transition:border-color .3s;border-radius:2px" onfocus="this.style.borderColor='rgba(255,255,255,.2)'" onblur="this.style.borderColor='rgba(255,255,255,.08)'">
+      <textarea name="message" placeholder="What's your biggest time sink?" rows="2" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:white;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:14px 18px;outline:none;transition:border-color .3s;border-radius:2px;resize:none" onfocus="this.style.borderColor='rgba(255,255,255,.2)'" onblur="this.style.borderColor='rgba(255,255,255,.08)'"></textarea>
+      <button type="submit" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:#000;background:white;border:none;padding:15px;cursor:pointer;transition:all .3s;border-radius:2px" onmouseover="this.style.background='rgba(180,150,255,.9)'" onmouseout="this.style.background='white'">Send →</button>
+    </form>
+    <div id="formSuccess" style="display:none;text-align:center;padding:24px;font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(100,220,100,.8)">✓ We'll be in touch within 24 hours.</div>
+  </div>
   <div style="margin-top:32px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.12)">We take on 3–4 new business clients per month to ensure quality.</div>
 </section>
 
@@ -1272,15 +1336,21 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
 <footer>
   <div>
     <div class="foot-logo brand-logo"><span class="brand-rasor">RASOR</span><span class="brand-divider"></span><span class="brand-ai">AI</span></div>
-    <div class="foot-copy">© 2026 Rasor Security Solutions LLC dba Rasor AI · Scottsdale, AZ</div>
+    <div class="foot-copy">© 2026 Rasor Security Solutions LLC dba Rasor AI</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.1);margin-top:6px">Scottsdale, Arizona</div>
   </div>
   <div class="foot-center">
     <a href="#how" class="foot-link" onclick="navScroll('how',event)">How it works</a>
     <a href="#pricing" class="foot-link" onclick="navScroll('pricing',event)">Pricing</a>
     <a href="#contact" class="foot-link" onclick="navScroll('contact',event)">Contact</a>
+    <span style="font-size:10px;color:rgba(255,255,255,.06)">·</span>
+    <a href="#" class="foot-link" style="font-size:10px">Instagram</a>
+    <a href="#" class="foot-link" style="font-size:10px">LinkedIn</a>
+    <a href="#" class="foot-link" style="font-size:10px">X</a>
   </div>
   <div class="foot-links">
     <a href="mailto:book@rasor.ai" class="foot-link">book@rasor.ai</a>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.08);letter-spacing:.1em">(480) coming soon</span>
   </div>
 </footer>
 
@@ -1324,8 +1394,11 @@ var heroContent = {
 };
 
 function setPath(p){
-  document.querySelectorAll('.path-section').forEach(s=>s.classList.remove('active'));
-  var t=document.getElementById('path-'+p);if(t)t.classList.add('active');
+  document.querySelectorAll('.path-section').forEach(s=>{s.style.opacity='0';setTimeout(()=>{s.classList.remove('active')},300)});
+  setTimeout(function(){
+    var t=document.getElementById('path-'+p);
+    if(t){t.classList.add('active');requestAnimationFrame(()=>{requestAnimationFrame(()=>{t.style.opacity='1'})});}
+  },320);
   document.querySelectorAll('.path-btn').forEach(b=>b.classList.remove('active'));
   var a=document.querySelector('.path-btn[data-path="'+p+'"]');if(a)a.classList.add('active');
   var c=document.getElementById('navCta');
@@ -1445,6 +1518,32 @@ function animateCount(el,prefix,suffix,target,duration){
 }
 document.querySelectorAll('.biz-stat').forEach(s=>statObs.observe(s));
 
+/* ── Hero Proof Panel Live Animation ── */
+(function(){
+  var proofObs=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){
+      if(e.isIntersecting&&!e.target.dataset.animated){
+        e.target.dataset.animated='1';
+        var items=e.target.querySelectorAll('.proof-item');
+        items.forEach(function(item,i){
+          item.style.opacity='0';item.style.transform='translateY(12px)';
+          item.style.transition='opacity .6s ease, transform .6s ease';
+          setTimeout(function(){
+            item.style.opacity='1';item.style.transform='translateY(0)';
+          }, 400 + i*600);
+        });
+        var footer=e.target.querySelector('.proof-footer');
+        if(footer){
+          footer.style.opacity='0';
+          setTimeout(function(){footer.style.opacity='1';footer.style.transition='opacity .5s ease'},400+items.length*600+300);
+        }
+      }
+    });
+  },{threshold:.2});
+  var pw=document.querySelector('.proof-inner');
+  if(pw)proofObs.observe(pw);
+})();
+
 /* ── Statement Bar + Parallax ── */
 const stmtObs=new IntersectionObserver(ents=>{
   ents.forEach(e=>{
@@ -1458,6 +1557,102 @@ document.querySelectorAll('.stmt').forEach((s,i)=>{
   s.dataset.parallax=''+(i+1);
   stmtObs.observe(s);
 });
+
+/* ── Contact Form Submission ── */
+document.getElementById('bizContactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=this;
+  var data={
+    access_key:'', // Will need Web3Forms key — for now mailto fallback
+    name:form.name.value,
+    phone:form.phone.value,
+    business:form.business.value,
+    message:form.message.value,
+    subject:'New Lead — Rasor AI Website'
+  };
+  // Fallback: open mailto with form data
+  var body='Name: '+data.name+'%0APhone: '+data.phone+'%0ABusiness: '+data.business+'%0AMessage: '+data.message;
+  window.open('mailto:book@rasor.ai?subject='+encodeURIComponent(data.subject)+'&body='+body);
+  form.style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
+
+/* ── Animated Call Transcript Demo ── */
+(function(){
+  var callScript=[
+    {who:'ai',text:'Thanks for calling Luxe Med Spa, this is your AI receptionist. How can I help you today?',delay:800},
+    {who:'caller',text:'Hi, yeah — I wanted to ask about Botox. Do you guys have any availability this week?',delay:2200},
+    {who:'ai',text:'Absolutely! We have openings Thursday afternoon and Friday morning. Our Botox consultations include a full assessment with one of our injectors. Would either of those work for you?',delay:2000},
+    {who:'caller',text:'Thursday afternoon would be perfect.',delay:1800},
+    {who:'ai',text:'Great — I have 2:30 PM or 4:00 PM available Thursday. Which do you prefer?',delay:1600},
+    {who:'caller',text:'2:30 works.',delay:1400},
+    {who:'ai',text:'You\'re all set for Thursday at 2:30 PM. I\'ll send you a confirmation text right now with the address and what to expect. Is there anything else I can help with?',delay:1800},
+    {who:'caller',text:'No, that\'s it. Thanks!',delay:1200},
+    {who:'ai',text:'You\'re welcome! See you Thursday. Have a great day.',delay:1000}
+  ];
+  var container=document.getElementById('callMessages');
+  var result=document.getElementById('callResult');
+  var timer=document.getElementById('callTimer');
+  var replay=document.getElementById('replayCall');
+  var timerInterval;
+  function addMsg(who,text,cb){
+    var row=document.createElement('div');
+    row.style.cssText='display:flex;gap:12px;align-items:flex-start;opacity:0;transform:translateY(8px);transition:opacity .4s ease, transform .4s ease';
+    var label=document.createElement('span');
+    label.style.cssText='font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;flex-shrink:0;padding-top:4px;min-width:52px';
+    label.style.color=who==='ai'?'rgba(100,220,100,.6)':'rgba(180,140,255,.5)';
+    label.textContent=who==='ai'?'RASOR':'CALLER';
+    var bubble=document.createElement('span');
+    bubble.style.cssText='font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:400;line-height:1.5;color:rgba(255,255,255,'+(who==='ai'?'.7':'.4')+')';
+    bubble.textContent=text;
+    row.appendChild(label);
+    row.appendChild(bubble);
+    container.appendChild(row);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      row.style.opacity='1';row.style.transform='translateY(0)';
+      if(cb)setTimeout(cb,200);
+    })});
+  }
+  function runCall(){
+    container.innerHTML='';
+    result.style.opacity='0';
+    var seconds=0;
+    if(timerInterval)clearInterval(timerInterval);
+    timer.textContent='0:00';
+    timerInterval=setInterval(function(){
+      seconds++;
+      var m=Math.floor(seconds/60);
+      var s=seconds%60;
+      timer.textContent=m+':'+(s<10?'0':'')+s;
+    },1000);
+    var totalDelay=0;
+    callScript.forEach(function(line,i){
+      totalDelay+=line.delay;
+      setTimeout(function(){
+        addMsg(line.who,line.text);
+        container.scrollTop=container.scrollHeight;
+      },totalDelay);
+    });
+    setTimeout(function(){
+      clearInterval(timerInterval);
+      result.style.opacity='1';
+    },totalDelay+1200);
+  }
+  var demoObs=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){
+      if(e.isIntersecting&&!e.target.dataset.played){
+        e.target.dataset.played='1';
+        setTimeout(runCall,400);
+      }
+    });
+  },{threshold:.3});
+  var demo=document.getElementById('callDemo');
+  if(demo)demoObs.observe(demo);
+  if(replay)replay.addEventListener('click',function(){
+    demo.dataset.played='';
+    runCall();
+  });
+})();
 
 // Lightweight parallax for statements (desktop only)
 if(window.innerWidth>768){
