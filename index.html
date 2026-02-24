@@ -132,6 +132,7 @@ body::after{
 
 #cur{position:fixed;width:5px;height:5px;background:rgba(255,255,255,.8);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(255,255,255,.1);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s}
+#cursor-glow{position:fixed;width:600px;height:600px;border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(120,80,255,.06) 0%,rgba(80,60,200,.03) 30%,transparent 70%);transition:opacity .4s;opacity:0;mix-blend-mode:screen;will-change:transform}
 
 /* NAV */
 nav{
@@ -851,6 +852,7 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
 
 <div id="cur"></div>
 <div id="cur-ring"></div>
+<div id="cursor-glow"></div>
 <div class="tt" id="tt"><div class="tt-tier"></div><div class="tt-name"></div><div class="tt-desc"></div></div>
 <div class="node-card" id="nodeCard">
   <div class="nc-tier"></div>
@@ -1360,10 +1362,11 @@ function setPath(p){
 try{var sp=localStorage.getItem('rasor-path');if(sp==='personal')setPath('personal')}catch(e){}
 
 /* ── Cursor ── */
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR)})();
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring'),glow=document.getElementById('cursor-glow');
+let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';glow.style.opacity='1'});
+document.addEventListener('mouseleave',()=>{glow.style.opacity='0'});
+(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';gx+=(mx-gx)*.05;gy+=(my-gy)*.05;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animR)})();
 document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseenter',()=>{ring.style.width='50px';ring.style.height='50px';ring.style.borderColor='rgba(255,255,255,.22)'});
   el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(255,255,255,.1)'});
