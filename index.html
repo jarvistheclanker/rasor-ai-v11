@@ -45,7 +45,7 @@
 .app-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;margin-right:8px}
 .app-tag-u{color:rgba(180,140,255,.6)}.app-tag-j{color:rgba(100,220,100,.6)}
 /* BIZ USE CASES */
-.uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:64px}
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:64px}
 .uc{background:#000;padding:40px 36px;cursor:default;transition:background .3s;position:relative;overflow:hidden}
 .uc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,200,80,.6),transparent);transform:scaleX(.3);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1);opacity:.3}
 .uc::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(255,200,80,.03),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
@@ -89,7 +89,7 @@
 .biz-plan-full::before{content:'';position:absolute;top:50%;left:-100px;width:500px;height:400px;background:radial-gradient(ellipse,rgba(255,200,80,.03) 0%,transparent 70%);transform:translateY(-50%);pointer-events:none}
 @media(max-width:900px){
   .split-grid{grid-template-columns:1fr;padding:80px 24px;gap:48px}
-  .uc-grid,.biz-pg{grid-template-columns:1fr}
+  .uc-grid,.biz-pg,.caps-grid{grid-template-columns:1fr}
   .biz-stats{grid-template-columns:1fr}
   .biz-plan-full{grid-column:1}
   .path-btn{padding:8px 16px}
@@ -613,7 +613,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
   pointer-events:none;
 }
 .caps-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1}
-.caps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:0;counter-reset:capIdx}
+.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:0;counter-reset:capIdx}
 .cap{background:#020202;padding:36px 30px;transition:all .3s;cursor:default;position:relative;overflow:hidden;counter-increment:capIdx}
 .cap::before{content:counter(capIdx,decimal-leading-zero);position:absolute;top:14px;right:16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.06);pointer-events:none}
 .cap::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(180,140,255,.5),transparent);opacity:0;transition:opacity .3s}
@@ -1129,6 +1129,8 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
       <div class="uc"><div class="uc-ind"><span class="uc-emoji">🏠</span>Real Estate</div><div class="uc-title">Leads qualified before<br>you pick up the phone.</div><div class="uc-desc">Inbound buyer and seller leads captured, qualified with AI, and routed to the right agent. Follow-up sequences run until they book or opt out.</div><div class="uc-result">↑ 5x faster lead response · 40% more appointments set</div></div>
       <div class="uc"><div class="uc-ind"><span class="uc-emoji">❄️</span>HVAC / Home Services</div><div class="uc-title">No call left behind.<br>No tech sitting idle.</div><div class="uc-desc">AI answers every service call, dispatches based on urgency, sends confirmations, and follows up for reviews. Your phone rings — your AI handles it.</div><div class="uc-result">↑ 28% more jobs booked · Zero missed after-hours calls</div></div>
       <div class="uc"><div class="uc-ind"><span class="uc-emoji">🦷</span>Dental / Healthcare</div><div class="uc-title">Patient intake on autopilot.<br>Recalls that actually work.</div><div class="uc-desc">New patient forms, appointment reminders, recall campaigns, and insurance verification — all handled without your front desk lifting a finger.</div><div class="uc-result">↑ 22% recall rate improvement · 3hrs/day saved at front desk</div></div>
+      <div class="uc"><div class="uc-ind"><span class="uc-emoji">⚖️</span>Law Firms</div><div class="uc-title">Every intake captured.<br>No lead left waiting.</div><div class="uc-desc">AI answers prospective client calls, qualifies case type and urgency, books consultations, and sends follow-up — nights, weekends, holidays.</div><div class="uc-result">↑ 3x faster intake response · Zero missed after-hours inquiries</div></div>
+      <div class="uc"><div class="uc-ind"><span class="uc-emoji">🚗</span>Auto Services</div><div class="uc-title">Appointments booked.<br>Service reminders sent.</div><div class="uc-desc">AI handles scheduling, sends maintenance reminders, confirms appointments, and follows up on estimates — your front counter stays focused on customers in-store.</div><div class="uc-result">↑ 31% more appointments booked · Automated service reminders</div></div>
     </div>
   </div>
 </section>
@@ -1148,6 +1150,7 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
       <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Performance Reporting</div><div class="cap-desc">Weekly dashboards and summaries delivered automatically. Know your numbers without pulling them.</div></div>
       <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Custom Integrations</div><div class="cap-desc">Connects to your existing tools — CRM, calendar, POS, EHR, and more. No rip-and-replace.</div></div>
       <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Multi-Location Support</div><div class="cap-desc">One AI system scaled across all your locations. Consistent experience, centralized control.</div></div>
+      <div class="cap"><div class="cap-dot t2"></div><div class="cap-title">Review & Reputation</div><div class="cap-desc">Automated review requests after every job. Monitor and respond to Google, Yelp, and social mentions.</div></div>
     </div>
   </div>
 </section>
