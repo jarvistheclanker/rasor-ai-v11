@@ -880,23 +880,23 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
 <section class="call-demo-section">
   <div class="call-demo-bg"></div>
   <div class="call-demo-inner">
-    <div class="sec-eyebrow">Hear it yourself</div>
-    <h2 class="sec-h">A real call.<br><span class="ital">Handled by AI.</span></h2>
+    <div class="sec-eyebrow">Live demo</div>
+    <h2 class="sec-h">Call Jarvis.<br><span class="ital">Right now.</span></h2>
     <div id="callDemo" class="call-demo-box">
       <div class="call-demo-header">
         <div class="call-demo-live-dot"></div>
-        <span class="call-demo-label">LIVE CALL — INBOUND</span>
+        <span class="call-demo-label">RASOR AI — INBOUND CALL</span>
         <span class="call-demo-timer" id="callTimer">0:00</span>
       </div>
       <div id="callMessages" class="call-demo-messages"></div>
       <div id="callResult" class="call-demo-result">
         <div class="call-demo-result-badges">
-          <div class="call-demo-badge call-demo-badge-green">✓ APPOINTMENT BOOKED</div>
-          <div class="call-demo-badge call-demo-badge-purple">✓ SMS CONFIRMATION SENT</div>
-          <div class="call-demo-badge call-demo-badge-gold">✓ CRM UPDATED</div>
+          <div class="call-demo-badge call-demo-badge-green">✓ LEAD QUALIFIED</div>
+          <div class="call-demo-badge call-demo-badge-purple">✓ INFO CAPTURED</div>
+          <div class="call-demo-badge call-demo-badge-gold">✓ DISCOVERY SCHEDULED</div>
         </div>
         <div class="call-demo-cta" id="callDemoCta">
-          <a href="tel:+14803767992" class="btn-w">Book a discovery call <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="tel:+14803767992" class="btn-w">Call (480) 376-7992 — Try it yourself <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
@@ -1314,15 +1314,15 @@ document.getElementById('bizContactForm').addEventListener('submit',function(e){
 /* ── Animated Call Transcript Demo ── */
 (function(){
   var callScript=[
-    {who:'ai',text:'Thanks for calling Luxe Med Spa, this is your AI receptionist. How can I help you today?',delay:800},
-    {who:'caller',text:'Hi, yeah — I wanted to ask about Botox. Do you guys have any availability this week?',delay:2200},
-    {who:'ai',text:'Absolutely! We have openings Thursday afternoon and Friday morning. Our Botox consultations include a full assessment with one of our injectors. Would either of those work for you?',delay:2000},
-    {who:'caller',text:'Thursday afternoon would be perfect.',delay:1800},
-    {who:'ai',text:'Great — I have 2:30 PM or 4:00 PM available Thursday. Which do you prefer?',delay:1600},
-    {who:'caller',text:'2:30 works.',delay:1400},
-    {who:'ai',text:'You\'re all set for Thursday at 2:30 PM. I\'ll send you a confirmation text right now with the address and what to expect. Is there anything else I can help with?',delay:1800},
-    {who:'caller',text:'No, that\'s it. Thanks!',delay:1200},
-    {who:'ai',text:'You\'re welcome! See you Thursday. Have a great day.',delay:1000}
+    {who:'ai',text:'Thanks for calling Rasor AI, this is Jarvis. How can I help you today?',delay:800},
+    {who:'caller',text:'Hey — I run a med spa in Scottsdale and we\'re missing a ton of calls after hours. Can you guys help with that?',delay:2400},
+    {who:'ai',text:'Yeah, absolutely. That\'s one of the biggest things we solve. How many calls would you say you\'re missing per week?',delay:2000},
+    {who:'caller',text:'Probably 15 to 20. We close at 6 but people call until like 9.',delay:1800},
+    {who:'ai',text:'That\'s a lot of revenue walking away. We\'d set up an AI receptionist on your line that answers every call 24/7 — books appointments, answers questions, sends confirmation texts. Most clients are live within 48 hours.',delay:2200},
+    {who:'caller',text:'Interesting. What does something like that cost?',delay:1600},
+    {who:'ai',text:'Starts at twenty-five hundred setup and six ninety-seven a month, fully managed. Most of our clients find it pays for itself in the first month just from recovered calls.',delay:2000},
+    {who:'caller',text:'That\'s not bad at all. How do we get started?',delay:1400},
+    {who:'ai',text:'Let me grab your info and Mikey — our founder — will reach out within 24 hours with a custom proposal. What\'s your name?',delay:1600}
   ];
   var container=document.getElementById('callMessages');
   var result=document.getElementById('callResult');
@@ -1336,7 +1336,7 @@ document.getElementById('bizContactForm').addEventListener('submit',function(e){
     var label=document.createElement('span');
     label.style.cssText='font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;flex-shrink:0;padding-top:4px;min-width:52px';
     label.style.color=who==='ai'?'rgba(100,220,100,.6)':'rgba(180,140,255,.5)';
-    label.textContent=who==='ai'?'RASOR':'CALLER';
+    label.textContent=who==='ai'?'JARVIS':'CALLER';
     var bubble=document.createElement('span');
     bubble.style.cssText='font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:400;line-height:1.5;color:rgba(255,255,255,'+(who==='ai'?'.7':'.4')+')';
     bubble.textContent=text;
