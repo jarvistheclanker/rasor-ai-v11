@@ -875,34 +875,16 @@ footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns
   </div>
 </section>
 
-<!-- BIZ: LIVE CALL DEMO (moved up!) -->
+<!-- BIZ: LIVE CALL DEMO -->
 <div class="section-divider"></div>
 <section class="call-demo-section">
   <div class="call-demo-bg"></div>
-  <div class="call-demo-inner">
+  <div class="call-demo-inner" style="text-align:center">
     <div class="sec-eyebrow">Live demo</div>
     <h2 class="sec-h">Call Jarvis.<br><span class="ital">Right now.</span></h2>
-    <div id="callDemo" class="call-demo-box">
-      <div class="call-demo-header">
-        <div class="call-demo-live-dot"></div>
-        <span class="call-demo-label">RASOR AI — INBOUND CALL</span>
-        <span class="call-demo-timer" id="callTimer">0:00</span>
-      </div>
-      <div id="callMessages" class="call-demo-messages"></div>
-      <div id="callResult" class="call-demo-result">
-        <div class="call-demo-result-badges">
-          <div class="call-demo-badge call-demo-badge-green">✓ LEAD QUALIFIED</div>
-          <div class="call-demo-badge call-demo-badge-purple">✓ INFO CAPTURED</div>
-          <div class="call-demo-badge call-demo-badge-gold">✓ DISCOVERY SCHEDULED</div>
-        </div>
-        <div class="call-demo-cta" id="callDemoCta">
-          <a href="tel:+14803767992" class="btn-w">Call (480) 376-7992 — Try it yourself <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:40px">
-      <button id="replayCall" class="replay-btn">↻ Replay demo</button>
-    </div>
+    <p class="cta-sub" style="max-width:500px;margin:0 auto 48px">This isn't a recording. Jarvis is our AI — live, on the phone, ready to talk about your business. Experience exactly what we build.</p>
+    <a href="tel:+14803767992" class="btn-w" style="font-size:18px;padding:20px 48px;letter-spacing:.15em">(480) 376-7992</a>
+    <div style="margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.15)">AVAILABLE 24/7 · AI-POWERED · SCOTTSDALE, AZ</div>
   </div>
 </section>
 
@@ -1311,83 +1293,7 @@ document.getElementById('bizContactForm').addEventListener('submit',function(e){
   document.getElementById('formSuccess').style.display='block';
 });
 
-/* ── Animated Call Transcript Demo ── */
-(function(){
-  var callScript=[
-    {who:'ai',text:'Thanks for calling Rasor AI, this is Jarvis. How can I help you today?',delay:800},
-    {who:'caller',text:'Hey — I run a med spa in Scottsdale and we\'re missing a ton of calls after hours. Can you guys help with that?',delay:2400},
-    {who:'ai',text:'Yeah, absolutely. That\'s one of the biggest things we solve. How many calls would you say you\'re missing per week?',delay:2000},
-    {who:'caller',text:'Probably 15 to 20. We close at 6 but people call until like 9.',delay:1800},
-    {who:'ai',text:'That\'s a lot of revenue walking away. We\'d set up an AI receptionist on your line that answers every call 24/7 — books appointments, answers questions, sends confirmation texts. Most clients are live within 48 hours.',delay:2200},
-    {who:'caller',text:'Interesting. What does something like that cost?',delay:1600},
-    {who:'ai',text:'Starts at twenty-five hundred setup and six ninety-seven a month, fully managed. Most of our clients find it pays for itself in the first month just from recovered calls.',delay:2000},
-    {who:'caller',text:'That\'s not bad at all. How do we get started?',delay:1400},
-    {who:'ai',text:'Let me grab your info and Mikey — our founder — will reach out within 24 hours with a custom proposal. What\'s your name?',delay:1600}
-  ];
-  var container=document.getElementById('callMessages');
-  var result=document.getElementById('callResult');
-  var demoCta=document.getElementById('callDemoCta');
-  var timer=document.getElementById('callTimer');
-  var replay=document.getElementById('replayCall');
-  var timerInterval;
-  function addMsg(who,text){
-    var row=document.createElement('div');
-    row.style.cssText='display:flex;gap:12px;align-items:flex-start;opacity:0;transform:translateY(8px);transition:opacity .4s ease, transform .4s ease';
-    var label=document.createElement('span');
-    label.style.cssText='font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;flex-shrink:0;padding-top:4px;min-width:52px';
-    label.style.color=who==='ai'?'rgba(100,220,100,.6)':'rgba(180,140,255,.5)';
-    label.textContent=who==='ai'?'JARVIS':'CALLER';
-    var bubble=document.createElement('span');
-    bubble.style.cssText='font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:400;line-height:1.5;color:rgba(255,255,255,'+(who==='ai'?'.7':'.4')+')';
-    bubble.textContent=text;
-    row.appendChild(label);row.appendChild(bubble);
-    container.appendChild(row);
-    requestAnimationFrame(function(){requestAnimationFrame(function(){
-      row.style.opacity='1';row.style.transform='translateY(0)';
-    })});
-  }
-  function runCall(){
-    container.innerHTML='';
-    result.style.opacity='0';
-    if(demoCta)demoCta.style.opacity='0';
-    var seconds=0;
-    if(timerInterval)clearInterval(timerInterval);
-    timer.textContent='0:00';
-    timerInterval=setInterval(function(){
-      seconds++;
-      var m=Math.floor(seconds/60);var s=seconds%60;
-      timer.textContent=m+':'+(s<10?'0':'')+s;
-    },1000);
-    var totalDelay=0;
-    callScript.forEach(function(line){
-      totalDelay+=line.delay;
-      setTimeout(function(){
-        addMsg(line.who,line.text);
-        container.scrollTop=container.scrollHeight;
-      },totalDelay);
-    });
-    setTimeout(function(){
-      clearInterval(timerInterval);
-      result.style.opacity='1';
-      setTimeout(function(){
-        if(demoCta)demoCta.style.opacity='1';
-      },600);
-    },totalDelay+1200);
-  }
-  var demoObs=new IntersectionObserver(function(ents){
-    ents.forEach(function(e){
-      if(e.isIntersecting&&!e.target.dataset.played){
-        e.target.dataset.played='1';
-        setTimeout(runCall,400);
-      }
-    });
-  },{threshold:.3});
-  var demo=document.getElementById('callDemo');
-  if(demo)demoObs.observe(demo);
-  if(replay)replay.addEventListener('click',function(){
-    demo.dataset.played='';runCall();
-  });
-})();
+/* ── Call transcript removed — replaced with live call CTA ── */
 
 /* ── Lightweight parallax for statements (desktop only) ── */
 if(window.innerWidth>768){
