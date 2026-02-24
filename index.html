@@ -40,17 +40,19 @@
 /* BIZ USE CASES */
 .uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:64px}
 .uc{background:#000;padding:40px 36px;cursor:default;transition:background .3s;position:relative;overflow:hidden}
-.uc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,200,80,.6),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.uc:hover{background:rgba(255,255,255,.02)}.uc:hover::before{transform:scaleX(1)}
-.uc-ind{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.55);margin-bottom:12px}
+.uc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,200,80,.6),transparent);transform:scaleX(.3);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1);opacity:.3}
+.uc::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(255,200,80,.03),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+.uc:hover{background:rgba(255,255,255,.02)}.uc:hover::before{transform:scaleX(1);opacity:1}.uc:hover::after{opacity:1}
+.uc-ind{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.55);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.uc-emoji{font-size:16px;letter-spacing:0}
 .uc-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:white;margin-bottom:10px;line-height:1.15}
 .uc-desc{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.75;margin-bottom:16px}
 .uc-result{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(100,220,100,.65);border-top:1px solid rgba(255,255,255,.04);padding-top:14px}
 /* BIZ STATS */
 .biz-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin:0}
-.biz-stat{background:#020202;padding:48px 36px;text-align:center;cursor:default;transition:background .3s}
+.biz-stat{background:#020202;padding:48px 36px;text-align:center;cursor:default;transition:background .3s;border-top:1px solid rgba(255,255,255,.06)}
 .biz-stat:hover{background:rgba(255,255,255,.015)}
-.biz-stat-v{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:500;color:white;line-height:1}
+.biz-stat-v{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:500;color:white;line-height:1;text-shadow:0 0 60px rgba(255,255,255,.08)}
 .biz-stat-l{font-size:12px;font-weight:300;color:rgba(255,255,255,.25);margin-top:10px;line-height:1.65}
 /* PROOF ITEMS (personal path reuse) */
 .feat-list{display:flex;flex-direction:column;gap:18px;margin-top:40px}
@@ -64,17 +66,20 @@
 .biz-pg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
 .biz-plan{background:#000;padding:52px 44px;display:flex;flex-direction:column;position:relative;transition:background .3s}
 .biz-plan:hover{background:rgba(255,255,255,.015)}
-.biz-plan.feat{background:rgba(255,255,255,.022)}
+.biz-plan.feat{background:rgba(255,255,255,.03);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);position:relative;overflow:hidden}
+.biz-plan.feat::after{content:'';position:absolute;inset:-2px;border-radius:0;background:linear-gradient(135deg,rgba(180,140,255,.3),rgba(100,180,255,.2),rgba(255,200,80,.3),rgba(180,140,255,.3));background-size:300% 300%;animation:gradBorder 6s ease infinite;z-index:-1;opacity:.5}
+.biz-plan.feat::before{content:'';position:absolute;top:0;right:0;width:400px;height:300px;background:radial-gradient(ellipse,rgba(120,80,255,.05) 0%,transparent 70%);pointer-events:none}
 .biz-plan-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,200,80,.7),rgba(180,140,255,.4))}
 .biz-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.8);margin-bottom:14px}
 .biz-plan-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:white;margin-bottom:10px}
 .biz-plan-desc{font-size:12.5px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.28);margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.05)}
-.biz-price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;color:white;line-height:1}
+.biz-price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;color:white;line-height:1;text-shadow:0 0 40px rgba(255,255,255,.1)}
 .biz-price-sub{font-size:11px;color:rgba(255,255,255,.22);margin-top:4px;margin-bottom:32px}
 .biz-feats{list-style:none;flex:1;margin-bottom:32px}
 .biz-feats li{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.35);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
 .biz-feats li::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(255,200,80,.45);flex-shrink:0}
-.biz-plan-full{grid-column:1/-1;background:rgba(255,200,80,.025);border-top:1px solid rgba(255,200,80,.07)}
+.biz-plan-full{grid-column:1/-1;background:rgba(255,200,80,.025);border-top:1px solid rgba(255,200,80,.07);position:relative;overflow:hidden}
+.biz-plan-full::before{content:'';position:absolute;top:50%;left:-100px;width:500px;height:400px;background:radial-gradient(ellipse,rgba(255,200,80,.03) 0%,transparent 70%);transform:translateY(-50%);pointer-events:none}
 @media(max-width:900px){
   .split-grid{grid-template-columns:1fr;padding:80px 24px;gap:48px}
   .uc-grid,.biz-pg{grid-template-columns:1fr}
@@ -106,6 +111,25 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:200px 200px;
 }
+/* ── GLOBAL UTILITIES ── */
+.glow-text{text-shadow:0 0 40px rgba(255,255,255,.1)}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0}
+.glass{background:rgba(255,255,255,.03);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.06)}
+
+/* ── CTA GLOW PULSE ── */
+@keyframes ctaGlowPulse{0%,100%{opacity:.04}50%{opacity:.08}}
+/* ── STEP NUMBER PULSE ── */
+@keyframes stepPulse{0%,100%{opacity:.1}50%{opacity:.25}}
+/* ── ANIMATED GRADIENT BORDER ── */
+@keyframes gradBorder{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+/* ── DIVIDER BAR ANIMATE IN ── */
+@keyframes barSlideIn{from{width:0}to{width:100%}}
+/* ── FADE IN UP (scroll reveal) ── */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal-in{animation:fadeInUp .6s ease forwards}
+/* ── STAT COUNT ── */
+@keyframes countFadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
 #cur{position:fixed;width:5px;height:5px;background:rgba(255,255,255,.8);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(255,255,255,.1);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s}
 
@@ -161,14 +185,21 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);border-bottom
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse 60% 60% at 75% 50%, rgba(60,40,140,.1) 0%, transparent 65%);
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 40%, rgba(80,50,180,.05) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 60% at 75% 50%, rgba(60,40,140,.12) 0%, transparent 65%);
 }
 .hero-bg::after{
   content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-image:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);
   background-size:38px 38px;
   mask-image:radial-gradient(ellipse 85% 85% at 72% 50%,black 20%,transparent 78%);
   -webkit-mask-image:radial-gradient(ellipse 85% 85% at 72% 50%,black 20%,transparent 78%);
+}
+/* Hero bottom divider line */
+.hero-divider{
+  position:absolute;bottom:0;left:0;right:0;height:1px;z-index:3;
+  background:linear-gradient(90deg,transparent 5%,rgba(255,255,255,.12) 50%,transparent 95%);
 }
 .hero-inner{
   position:relative;z-index:2;
@@ -212,7 +243,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
   color:#000;background:white;padding:15px 32px;text-decoration:none;transition:all .3s;
   border-radius:2px;
 }
-.btn-w:hover{background:rgba(180,150,255,.9);transform:translateY(-1px)}
+.btn-w:hover{background:rgba(180,150,255,.9);transform:translateY(-2px);box-shadow:0 8px 24px rgba(120,80,255,.2)}
 .btn-ghost{
   font-size:12px;font-weight:300;color:rgba(255,255,255,.25);
   text-decoration:none;letter-spacing:.03em;
@@ -477,7 +508,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 }
 
 /* STATEMENTS */
-.stmts{padding:130px 60px;background:#020202}
+.stmts{padding:160px 60px;background:#020204}
 .stmt{
   border-top:1px solid rgba(255,255,255,.04);
   position:relative;overflow:hidden;cursor:default;
@@ -495,15 +526,16 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .stmt-n{
   position:absolute;left:0;top:50%;transform:translateY(-50%);
   font-family:'JetBrains Mono',monospace;
-  font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.1);
+  font-size:9px;letter-spacing:.25em;color:rgba(255,200,80,.15);
   transition:color .5s;
 }
 .stmt:hover .stmt-n{color:rgba(255,255,255,.35)}
 .stmt-bar{position:absolute;bottom:0;left:0;height:1px;width:0;background:linear-gradient(90deg,rgba(180,150,255,.5),transparent);transition:width .9s cubic-bezier(.22,1,.36,1)}
 .stmt:hover .stmt-bar{width:100%}
+.stmt-bar.animate-in{animation:barSlideIn 1.2s cubic-bezier(.22,1,.36,1) forwards}
 
 /* HOW IT WORKS */
-.how{padding:130px 60px}
+.how{padding:160px 60px}
 .how-inner{max-width:1160px;margin:0 auto}
 .sec-eyebrow{
   font-family:'JetBrains Mono',monospace;
@@ -519,7 +551,13 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
   letter-spacing:-.01em;color:white;margin-bottom:72px;
 }
 .sec-h .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.18)}
-.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);position:relative}
+/* Connecting line through step numbers */
+.steps::before{
+  content:'';position:absolute;top:83px;left:15%;right:15%;
+  height:1px;border-top:1px dashed rgba(255,255,255,.06);
+  z-index:2;pointer-events:none;
+}
 .step{
   background:#000;padding:52px 44px;
   position:relative;overflow:hidden;cursor:default;
@@ -528,8 +566,10 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .step:hover{background:rgba(255,255,255,.018)}
 .step-n{
   font-family:'JetBrains Mono',monospace;
-  font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.1);
+  font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.15);
   margin-bottom:32px;
+  animation:stepPulse 3s ease-in-out infinite;
+  position:relative;z-index:3;
 }
 .step-icon{
   width:48px;height:48px;
@@ -537,7 +577,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
   display:flex;align-items:center;justify-content:center;
   margin-bottom:28px;transition:border-color .4s;
 }
-.step:hover .step-icon{border-color:rgba(180,150,255,.3)}
+.step:hover .step-icon{border-color:rgba(180,150,255,.3);filter:drop-shadow(0 0 8px rgba(255,255,255,.15))}
 .step-title{
   font-family:'Cormorant Garamond',serif;
   font-size:26px;font-weight:500;color:white;margin-bottom:14px;
@@ -547,12 +587,22 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .step:hover .step-bar{transform:scaleX(1)}
 
 /* CAPS */
-.caps{padding:130px 60px;background:#020202}
-.caps-inner{max-width:1160px;margin:0 auto}
-.caps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:0}
-.cap{background:#020202;padding:34px 30px;transition:background .3s;cursor:default}
-.cap:hover{background:rgba(255,255,255,.02)}
-.cap-dot{width:7px;height:7px;border-radius:50%;margin-bottom:20px}
+.caps{padding:160px 60px;background:#020202;position:relative}
+.caps::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:600px;
+  background:radial-gradient(ellipse,rgba(80,50,180,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.caps-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1}
+.caps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);margin-top:0;counter-reset:capIdx}
+.cap{background:#020202;padding:36px 30px;transition:all .3s;cursor:default;position:relative;overflow:hidden;counter-increment:capIdx}
+.cap::before{content:counter(capIdx,decimal-leading-zero);position:absolute;top:14px;right:16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.06);pointer-events:none}
+.cap::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(180,140,255,.5),transparent);opacity:0;transition:opacity .3s}
+.cap:hover{background:rgba(255,255,255,.025)}
+.cap:hover::after{opacity:1}
+.cap-dot{width:7px;height:7px;border-radius:50%;margin-bottom:20px;transition:transform .3s}
+.cap:hover .cap-dot{transform:scale(1.4)}
 .t1{background:rgba(100,220,100,.9);box-shadow:0 0 10px rgba(100,220,100,.5)}
 .t2{background:rgba(255,200,80,.9);box-shadow:0 0 10px rgba(255,200,80,.5)}
 .t3{background:rgba(180,140,255,.9);box-shadow:0 0 10px rgba(180,140,255,.5)}
@@ -560,7 +610,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .cap-desc{font-size:11.5px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.25)}
 
 /* PRICING */
-.pricing{padding:130px 60px}
+.pricing{padding:160px 60px}
 .pricing-inner{max-width:1160px;margin:0 auto}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
 .plan{background:#000;padding:52px 40px;display:flex;flex-direction:column;position:relative}
@@ -569,7 +619,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .plan-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,200,80,.8);margin-bottom:18px}
 .plan-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:white;margin-bottom:12px}
 .plan-desc{font-size:12.5px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.28);margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.05)}
-.plan-amt{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;color:white;line-height:1}
+.plan-amt{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;color:white;line-height:1;text-shadow:0 0 40px rgba(255,255,255,.1)}
 .plan-setup{font-size:11px;color:rgba(255,255,255,.22);margin-top:4px}
 .plan-mo{font-size:12px;color:rgba(255,255,255,.22);margin-bottom:36px;margin-top:2px}
 .plan-feats{list-style:none;flex:1;margin-bottom:36px}
@@ -580,7 +630,7 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .plan-btn.out{color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1)}.plan-btn.out:hover{color:white;border-color:rgba(255,255,255,.4)}
 
 /* TESTI */
-.testi{padding:130px 60px;background:#020202}
+.testi{padding:160px 60px;background:#030305}
 .testi-inner{max-width:1160px;margin:0 auto}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
 .tcard{background:#020202;padding:48px 44px;transition:background .3s}
@@ -598,8 +648,8 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .trole{font-size:10.5px;font-weight:300;color:rgba(255,255,255,.22);margin-top:2px}
 
 /* CTA */
-.cta{padding:160px 60px;text-align:center;position:relative;overflow:hidden}
-.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(80,50,180,.13) 0%,transparent 70%);pointer-events:none}
+.cta{padding:180px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:1000px;height:600px;background:radial-gradient(ellipse,rgba(120,80,255,.08) 0%,transparent 70%);pointer-events:none;animation:ctaGlowPulse 4s ease-in-out infinite}
 .cta h2{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(48px,6vw,90px);
@@ -612,20 +662,26 @@ h1 .ital{font-style:italic;font-weight:300;color:rgba(255,255,255,.2)}
 .cta-btns{display:flex;justify-content:center;gap:24px;position:relative;z-index:1}
 
 /* FAQ */
-.faq-section{padding:120px 60px;max-width:860px;margin:0 auto}
+.faq-section{padding:140px 60px;max-width:860px;margin:0 auto}
 .faq-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px}
 .faq-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;color:white;line-height:1.1;margin-bottom:64px}
 .faq-title span{font-style:italic;font-weight:300;color:rgba(255,255,255,.22)}
-.faq-item{border-top:1px solid rgba(255,255,255,.05);padding:28px 0}
+.faq-item{border-top:1px solid rgba(255,255,255,.05);padding:0;border-left:2px solid transparent;transition:border-color .3s;overflow:hidden}
 .faq-item:last-child{border-bottom:1px solid rgba(255,255,255,.05)}
-.faq-q{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:white;margin-bottom:12px}
-.faq-a{font-size:13px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.32)}
+.faq-item:hover{border-left-color:rgba(255,200,80,.4)}
+.faq-q{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:white;padding:24px 0 24px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:color .3s}
+.faq-q:hover{color:rgba(255,255,255,.85)}
+.faq-toggle{font-family:'JetBrains Mono',monospace;font-size:16px;color:rgba(255,255,255,.25);flex-shrink:0;transition:transform .3s;margin-left:16px}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{font-size:13px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.32);max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;padding:0 0 0 16px}
+.faq-item.open .faq-a{max-height:300px;padding:0 0 24px 16px}
 
 /* FOOTER */
-footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:space-between;background:#000}
-/* FOOTER LOGO CSS MOVED TO BRAND-LOGO CLASSES */
-.foot-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.1)}
-.foot-links{display:flex;gap:28px}
+.foot-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+footer{padding:52px 60px 44px;background:#000;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:start;gap:24px}
+.foot-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.1);margin-top:12px}
+.foot-center{display:flex;gap:28px;justify-content:center}
+.foot-links{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 .foot-link{font-size:11px;color:rgba(255,255,255,.18);text-decoration:none;transition:color .25s}
 .foot-link:hover{color:rgba(255,255,255,.55)}
 
@@ -665,6 +721,12 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 }
 .proof-inner{
   max-width:480px;width:100%;
+  background:rgba(255,255,255,.02);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;
+  padding:32px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4), 0 0 80px rgba(120,80,255,.04);
 }
 .proof-eyebrow{
   font-family:'JetBrains Mono',monospace;
@@ -767,6 +829,22 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
   section{padding:80px 20px!important}
 }
 
+/* MOBILE — reduce glow / disable parallax */
+@media (max-width: 768px) {
+  .hero-bg{background:radial-gradient(ellipse 60% 60% at 75% 50%, rgba(60,40,140,.06) 0%, transparent 65%)}
+  .cta-glow{width:500px;height:300px;opacity:.5}
+  .caps::before{opacity:.5}
+  .biz-plan.feat::after{opacity:.25}
+  .biz-plan-full::before{opacity:.5}
+  .proof-inner{padding:20px}
+  .steps::before{display:none}
+  .stmt[data-parallax]{transform:none!important}
+  footer{grid-template-columns:1fr;gap:20px;text-align:center}
+  .foot-center{justify-content:center}
+  .foot-links{align-items:center}
+  .faq-section{padding:100px 24px}
+}
+
 </style>
 </head>
 <body>
@@ -855,6 +933,7 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
       </div>
     </div>
   </div>
+  <div class="hero-divider"></div>
 </section>
 
 <!-- MARQUEE -->
@@ -866,8 +945,9 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </div>
 
 <!-- CREDIBILITY (both paths) -->
-<section style="padding:48px 60px;background:#000;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="max-width:1160px;margin:0 auto;text-align:center">
+<div class="section-divider"></div>
+<section style="padding:64px 60px;background:#000;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="max-width:900px;margin:0 auto;text-align:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:40px">
     <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:28px">Built in Scottsdale. Deployed for Scottsdale.</div>
     <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap">
       <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:rgba(100,220,100,.7);flex-shrink:0"></span>Local, in-person service</div>
@@ -926,6 +1006,7 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- PERSONAL: HOW IT WORKS -->
+<div class="section-divider"></div>
 <section class="how" id="how">
   <div class="how-inner">
     <div class="sec-eyebrow">How it works</div>
@@ -939,6 +1020,7 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- PERSONAL: CAPABILITIES -->
+<div class="section-divider"></div>
 <section class="caps" id="capabilities">
   <div class="caps-inner">
     <div class="sec-eyebrow">What it does</div>
@@ -961,6 +1043,7 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- PERSONAL: OUTCOMES -->
+<div class="section-divider"></div>
 <section class="pricing" id="pricing">
   <div class="pricing-inner">
     <div class="sec-eyebrow">What changes</div>
@@ -997,27 +1080,27 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
   <div class="faq-eyebrow">Common questions</div>
   <h2 class="faq-title">Everything you <span>want to know</span></h2>
   <div class="faq-item">
-    <div class="faq-q">Is my data private?</div>
+    <div class="faq-q">Is my data private?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Yes. Your system runs on dedicated hardware — nothing is shared with other clients. Your conversations, calendar, and inbox data never train any public model. It's yours, fully isolated.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">Do I need to be technical?</div>
+    <div class="faq-q">Do I need to be technical?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Not at all. We handle everything — setup, configuration, and ongoing maintenance. Your job is to use it. If something feels off, you message us and it gets fixed. Usually same day.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">What AI does it run on?</div>
+    <div class="faq-q">What AI does it run on?<span class="faq-toggle">+</span></div>
     <div class="faq-a">We use the most capable AI models available, selected and routed based on the task. You don't manage any of it. You just talk to your AI and it works.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">What hardware do I need?</div>
+    <div class="faq-q">What hardware do I need?<span class="faq-toggle">+</span></div>
     <div class="faq-a">A Mac. That's it. We handle everything else — setup, configuration, deployment, and ongoing management. If you don't have one, we can provide dedicated hardware as part of your build.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">What if I want to cancel?</div>
+    <div class="faq-q">What if I want to cancel?<span class="faq-toggle">+</span></div>
     <div class="faq-a">No long-term contracts. Cancel anytime with 30 days notice. The setup fee covers your hardware and build — that's yours to keep regardless.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">How fast can I be up and running?</div>
+    <div class="faq-q">How fast can I be up and running?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Most systems are live within 48 hours of the onboarding call. We move fast. The 30-minute discovery call is enough for us to scope and start building immediately after.</div>
   </div>
 </section>
@@ -1043,7 +1126,8 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- BIZ: STATS -->
-<section style="padding:0 60px 130px">
+<div class="section-divider"></div>
+<section style="padding:0 60px 160px">
   <div style="max-width:1160px;margin:0 auto">
     <div class="biz-stats">
       <div class="biz-stat"><div class="biz-stat-v">24/7</div><div class="biz-stat-l">Every call answered.<br>Nights, weekends, holidays.</div></div>
@@ -1054,20 +1138,22 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- BIZ: USE CASES -->
+<div class="section-divider"></div>
 <section style="padding:0 60px 0;background:#000">
   <div style="max-width:1160px;margin:0 auto">
     <div class="sec-eyebrow">Who we build for</div>
     <h2 class="sec-h">Your industry.<br><span class="ital">Already mapped.</span></h2>
     <div class="uc-grid">
-      <div class="uc"><div class="uc-ind">Med Spa / Aesthetics</div><div class="uc-title">Every consultation booked.<br>Every follow-up sent.</div><div class="uc-desc">AI receptionist answers after-hours calls, books Botox and filler consults, sends pre-appointment instructions, and follows up with no-shows — automatically.</div><div class="uc-result">↑ 34% more consults booked · $0 additional front-desk cost</div></div>
-      <div class="uc"><div class="uc-ind">Real Estate</div><div class="uc-title">Leads qualified before<br>you pick up the phone.</div><div class="uc-desc">Inbound buyer and seller leads captured, qualified with AI, and routed to the right agent. Follow-up sequences run until they book or opt out.</div><div class="uc-result">↑ 5x faster lead response · 40% more appointments set</div></div>
-      <div class="uc"><div class="uc-ind">HVAC / Home Services</div><div class="uc-title">No call left behind.<br>No tech sitting idle.</div><div class="uc-desc">AI answers every service call, dispatches based on urgency, sends confirmations, and follows up for reviews. Your phone rings — your AI handles it.</div><div class="uc-result">↑ 28% more jobs booked · Zero missed after-hours calls</div></div>
-      <div class="uc"><div class="uc-ind">Dental / Healthcare</div><div class="uc-title">Patient intake on autopilot.<br>Recalls that actually work.</div><div class="uc-desc">New patient forms, appointment reminders, recall campaigns, and insurance verification — all handled without your front desk lifting a finger.</div><div class="uc-result">↑ 22% recall rate improvement · 3hrs/day saved at front desk</div></div>
+      <div class="uc"><div class="uc-ind"><span class="uc-emoji">🏥</span>Med Spa / Aesthetics</div><div class="uc-title">Every consultation booked.<br>Every follow-up sent.</div><div class="uc-desc">AI receptionist answers after-hours calls, books Botox and filler consults, sends pre-appointment instructions, and follows up with no-shows — automatically.</div><div class="uc-result">↑ 34% more consults booked · $0 additional front-desk cost</div></div>
+      <div class="uc"><div class="uc-ind"><span class="uc-emoji">🏠</span>Real Estate</div><div class="uc-title">Leads qualified before<br>you pick up the phone.</div><div class="uc-desc">Inbound buyer and seller leads captured, qualified with AI, and routed to the right agent. Follow-up sequences run until they book or opt out.</div><div class="uc-result">↑ 5x faster lead response · 40% more appointments set</div></div>
+      <div class="uc"><div class="uc-ind"><span class="uc-emoji">❄️</span>HVAC / Home Services</div><div class="uc-title">No call left behind.<br>No tech sitting idle.</div><div class="uc-desc">AI answers every service call, dispatches based on urgency, sends confirmations, and follows up for reviews. Your phone rings — your AI handles it.</div><div class="uc-result">↑ 28% more jobs booked · Zero missed after-hours calls</div></div>
+      <div class="uc"><div class="uc-ind"><span class="uc-emoji">🦷</span>Dental / Healthcare</div><div class="uc-title">Patient intake on autopilot.<br>Recalls that actually work.</div><div class="uc-desc">New patient forms, appointment reminders, recall campaigns, and insurance verification — all handled without your front desk lifting a finger.</div><div class="uc-result">↑ 22% recall rate improvement · 3hrs/day saved at front desk</div></div>
     </div>
   </div>
 </section>
 
 <!-- BIZ: CAPABILITIES (same visual as personal caps grid) -->
+<div class="section-divider"></div>
 <section class="caps" style="background:#000">
   <div class="caps-inner">
     <div class="sec-eyebrow">What we deploy</div>
@@ -1090,7 +1176,8 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- BIZ: HOW -->
-<section class="how" id="biz-how" style="background:#020202">
+<div class="section-divider"></div>
+<section class="how" id="biz-how" style="background:#020204">
   <div class="how-inner">
     <div class="sec-eyebrow">How it works</div>
     <h2 class="sec-h">Deployed fast.<br><span class="ital">Running forever.</span></h2>
@@ -1103,7 +1190,8 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- BIZ: PRICING -->
-<section class="pricing" id="biz-pricing">
+<div class="section-divider"></div>
+<section class="pricing" id="biz-pricing" style="background:#030305">
   <div class="pricing-inner">
     <div class="sec-eyebrow">Investment</div>
     <h2 class="sec-h">Replace a hire.<br><span class="ital">Not your budget.</span></h2>
@@ -1150,31 +1238,32 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </section>
 
 <!-- BIZ FAQ -->
+<div class="section-divider"></div>
 <section class="faq-section">
   <div class="faq-eyebrow">Common questions</div>
   <h2 class="faq-title">Everything you <span>want to know</span></h2>
   <div class="faq-item">
-    <div class="faq-q">How long does implementation take?</div>
+    <div class="faq-q">How long does implementation take?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Most systems are live within 48–72 hours of the discovery call. Complex multi-system builds may take up to a week. We scope everything upfront so there are no surprises.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">Do we need to change our existing tools?</div>
+    <div class="faq-q">Do we need to change our existing tools?<span class="faq-toggle">+</span></div>
     <div class="faq-a">No. We build on top of what you already use — your CRM, your inbox, your scheduling software. No migration required. We plug in, not replace.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">Is our customer and business data secure?</div>
+    <div class="faq-q">Is our customer and business data secure?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Yes. Your system runs on dedicated infrastructure — not shared servers. Your business data is never used to train public models. We can provide a detailed security overview on request.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">What if the AI makes a mistake?</div>
+    <div class="faq-q">What if the AI makes a mistake?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Every system is built with human-in-the-loop checkpoints for high-stakes actions. Your team approves before anything critical goes out. We monitor and fix issues proactively — usually before you notice them.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">Do you offer ongoing support?</div>
+    <div class="faq-q">Do you offer ongoing support?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Yes — all plans include ongoing management. As your business changes, your AI adapts. Updates, new automations, and fixes are handled by us in the background.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">What industries do you work with?</div>
+    <div class="faq-q">What industries do you work with?<span class="faq-toggle">+</span></div>
     <div class="faq-a">We work best with service businesses — med spas, dental offices, HVAC, real estate, and professional services. If your business handles inbound calls or leads, we can automate it.</div>
   </div>
 </section>
@@ -1193,9 +1282,17 @@ footer{padding:44px 60px;border-top:1px solid rgba(255,255,255,.04);display:flex
 </div><!-- /path-business -->
 
 <!-- FOOTER -->
+<div class="foot-divider"></div>
 <footer>
-  <div class="foot-logo brand-logo"><span class="brand-rasor">RASOR</span><span class="brand-divider"></span><span class="brand-ai">AI</span></div>
-  <div class="foot-copy">© 2026 Rasor Security Solutions LLC dba Rasor AI · Scottsdale, AZ</div>
+  <div>
+    <div class="foot-logo brand-logo"><span class="brand-rasor">RASOR</span><span class="brand-divider"></span><span class="brand-ai">AI</span></div>
+    <div class="foot-copy">© 2026 Rasor Security Solutions LLC dba Rasor AI · Scottsdale, AZ</div>
+  </div>
+  <div class="foot-center">
+    <a href="#how" class="foot-link" onclick="navScroll('how',event)">How it works</a>
+    <a href="#pricing" class="foot-link" onclick="navScroll('pricing',event)">Pricing</a>
+    <a href="#contact" class="foot-link" onclick="navScroll('contact',event)">Contact</a>
+  </div>
   <div class="foot-links">
     <a href="mailto:book@rasor.ai" class="foot-link">book@rasor.ai</a>
   </div>
@@ -1326,6 +1423,85 @@ document.querySelectorAll('.step,.cap,.plan,.tcard,.uc,.biz-stat,.biz-plan').for
   el.style.transition='opacity .75s ease, transform .75s ease';
   obs.observe(el);
 });
+
+/* ── FAQ Accordion ── */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    // Close all siblings in same section
+    item.parentElement.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+/* ── Stat Counting Animation ── */
+const statObs=new IntersectionObserver(ents=>{
+  ents.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='1';
+      const el=e.target.querySelector('.biz-stat-v');
+      if(!el)return;
+      const txt=el.textContent.trim();
+      if(txt==='24/7'){
+        el.style.animation='countFadeIn .6s ease forwards';
+      }else if(txt.includes('60')){
+        animateCount(el,'<','s',60,1200);
+      }else if(txt.includes('48')){
+        animateCount(el,'','hr',48,1200);
+      }
+    }
+  });
+},{threshold:.3});
+function animateCount(el,prefix,suffix,target,duration){
+  let start=0;const startTime=performance.now();
+  function step(now){
+    const progress=Math.min((now-startTime)/duration,1);
+    const eased=1-Math.pow(1-progress,3);
+    const current=Math.round(eased*target);
+    el.textContent=prefix+current+suffix;
+    if(progress<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+document.querySelectorAll('.biz-stat').forEach(s=>statObs.observe(s));
+
+/* ── Statement Bar + Parallax ── */
+const stmtObs=new IntersectionObserver(ents=>{
+  ents.forEach(e=>{
+    if(e.isIntersecting){
+      const bar=e.target.querySelector('.stmt-bar');
+      if(bar&&!bar.classList.contains('animate-in'))bar.classList.add('animate-in');
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.stmt').forEach((s,i)=>{
+  s.dataset.parallax=''+(i+1);
+  stmtObs.observe(s);
+});
+
+// Lightweight parallax for statements (desktop only)
+if(window.innerWidth>768){
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      ticking=true;
+      requestAnimationFrame(()=>{
+        document.querySelectorAll('.stmt[data-parallax]').forEach(s=>{
+          const rect=s.getBoundingClientRect();
+          const viewH=window.innerHeight;
+          if(rect.top<viewH&&rect.bottom>0){
+            const ratio=(rect.top/viewH-.5)*-1;
+            const idx=parseInt(s.dataset.parallax)||1;
+            const offset=ratio*(8+idx*3);
+            s.style.transform='translateY('+offset+'px)';
+          }
+        });
+        ticking=false;
+      });
+    }
+  });
+}
 </script>
 </body>
 </html>
